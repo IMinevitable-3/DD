@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/bulma-rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bulma-rtl.min.css' %}">
+</head>
+<body>
+    <form class="box" method="post" action="{% url 'signup_view' %}">
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">username</label>
+            <div class="control">
+              <input class="input" type="text" name="username" id="username" placeholder="enter any username" required>
+            </div>
+          </div>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="email" name="email" id="email" placeholder="e.g. alex@example.com" required>
+          </div>
+        </div>
+      
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" name="pass1" id="pass1" placeholder="********" required>
+          </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Confirm Password</label>
+            <div class="control">
+              <input class="input" type="password" name="pass2" id="pass2" placeholder="********" required>
+            </div>
+          </div>
+      
+        <button class="button is-primary" type="submit">Sign in</button>
+      </form>
+</body>
+</html>

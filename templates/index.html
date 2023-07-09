@@ -1,0 +1,294 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width,
+				initial-scale=1" />
+
+	<!-- Bootstrap CSS -->
+	<title>Diabetes</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity=
+"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous"/>
+	<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href= "https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet"/>
+	
+</head>
+<body>
+	<section id="navbar">
+	<nav class="navbar navbar-expand-lg navbar-light">
+		<div class="container-fluid">
+		<a class="navbar-brand" href="{% url 'home_view' %}">
+			<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+        <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+        <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+      </svg> Diabetes Diary</a>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse"
+			id="navbarSupportedContent">
+			<ul class="navbar-nav m-auto">
+			<li class="nav-item">
+				<a class="nav-link active"
+				aria-current="page"
+				href="#">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				href="#service">Services</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				href="#about">About Us</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				href="#blog">Blog</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				href="#doctors">Our Doctors</a>
+			</li>
+            <li class="nav-item">
+				<a class="nav-link"
+				href="#footer">Contact us</a>
+			</li>
+			</ul>
+			<a href="{% url 'login_view' %}">login 
+			{% comment %} <form class="d-flex" role="search">
+         <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg> Login</button>
+        </form> {% endcomment %}
+		</a>
+		</div>
+    </div>
+</nav>
+	</section>
+
+	<!-- banner -->
+	<section id="banner">
+	<div class="container-fluid" id="banner-container">
+		<div class="row" id="banner-row">
+		<div class="col-md-6" id="banner-col">
+			<h3>DIABETES DIARY : Your Guide to Managing Diabetes and Living a Healthy Life</h3>
+			<p>Welcome to the Diabetes Care Hub, your comprehensive resource for managing diabetes and leading a fulfilling life. Whether you or a loved one are newly diagnosed or have been living with diabetes for years, our goal is to provide you with the information, tools, and support you need to take control of your health and thrive.</p>
+
+			<div class="d-grid gap-2 d-md-flex justify-content-center">
+			<a class="btn btn-primary" href="#" role="button">Contact Us</a>
+			</div>
+		</div>
+		<div class="col-md-6" id="banner-col2">
+			<img class="img-responsive rounded mx-auto d-block" src="https://cdni.iconscout.com/illustration/premium/thumb/analyzing-diabetic-patient-report-4403264-3658888.png" alt="PIC"/>
+		</div>
+		</div>
+	</div>
+     
+
+	</section>
+
+	<section id="service">
+		<h1 class="text-center">SERVICES</h1>
+      <div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-4">
+				<div class="card shadow" style="width: 20rem;">
+					<div class="inner">
+					<img class="card-img-top"  src="https://www.verywellhealth.com/thmb/O5teeY9-ejUgEcFakppIeZsdzPU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/carb-counting-and-diabetes-5209223_FINAL-9796df35fa38420baec37a37c3c8347e.jpg" class="card-img-top" alt="sugar calculator">
+					</div>
+					<div class="card-body text-center">
+					  <h5 class="card-title">SUGAR CALCULATOR</h5>
+					  <p class="card-text">Managing blood sugar levels is a critical aspect of diabetes care.Calculate your sugar levels and make informed choices about your diet and sugar intake and to lead a healthier lifestyle.</p>
+					  <a href="#" class="btn btn-primary">Calculate</a>
+					</div>
+				  </div>
+			</div>
+			<div class="col-md-4">
+				<div class="card shadow" style="width: 20rem;">
+					<div class="inner">
+					<img class="card-img-top" src="https://firstresponse.ae/wp-content/uploads/2021/04/Best-Diet-Plan-To-Lose-Weight-For-Diabetic-Patients.jpg" class="card-img-top" alt="dietplan">
+					</div>
+					<div class="card-body text-center">
+					  <h5 class="card-title">DIET PLAN</h5>
+					  <p class="card-text">Here's a diet plan that can serve as a starting point for individuals with diabetes.Remember to monitor your blood sugar levels regularly and make adjustments to your diet as needed.</p>
+					  <a href="#" class="btn btn-primary">Get Dietplan</a>
+					</div>
+				  </div>
+			</div>
+			<div class="col-md-4">
+				<div class="card shadow" style="width: 20rem;">
+					<div class="inner">
+					<img class="card-img-top" src="https://domf5oio6qrcr.cloudfront.net/medialibrary/7463/c05575bb-6385-4159-86d2-babbbe5a167e.jpg" class="card-img-top" alt="exercise">
+					</div>
+					<div class="card-body text-center">
+					  <h5 class="card-title">EXERCISE</h5>
+					  <p class="card-text">Exercise is an essential component of diabetes,as it offers numerous benefits for blood sugar control,cardiovascular health,weight management , and overall well-being.</p>
+					  <a href="#" class="btn btn-primary">Exercise</a>
+					</div>
+				  </div>
+			</div>
+		</div>
+	  </div>
+	</section>
+	<!-- about Us -->
+	<section id="about">
+	<h1 class="text-center">About Us</h1>
+	<div class="container-fluid" id="about-container">
+		<div class="row" id="banner-row">
+		<div class="col-md-6" id="about-col">
+			<ul>
+			<li>
+				At our website, we understand the challenges and complexities of living with diabetes. Our mission is to empower individuals with diabetes, their families, and caregivers by equipping them with the knowledge and tools necessary to lead a healthy and fulfilling life.
+			</li>
+			<li>We offer comprehensive guidance on managing diabetes, including tips for healthy eating, exercise, blood sugar monitoring, medication management, and insulin administration.</li>
+			<li>
+				We promote a balanced and healthy lifestyle for individuals with diabetes. Our website offers advice on nutrition, recipes, meal planning, physical activity, stress management, and sleep hygiene.
+			</li>
+			<li>We provide a wide range of resources and tools, such as printable blood sugar logs, carbohydrate counting guides, meal planning templates, and medication trackers, to assist you in managing your diabetes effectively.</li>
+			<li>Our commitment is to empower and inspire you to take control of your diabetes journey. We believe that with the right information, support, and self-care, you can lead a fulfilling life while effectively managing your diabetes.</li>
+			</ul>
+		</div>
+		<div class="col-md-6" id="banner-col2">
+			<img class="img-responsive rounded mx-auto d-block" src="https://cdni.iconscout.com/illustration/premium/thumb/diabetes-expert-4403262-3658886.png " alt="about us"/>
+		</div>
+		</div>
+	</div>
+	</section>
+	<hr />
+	<!-- blog-->
+
+	<section id="blog">
+	<h1 class="text-center">BLOG</h1>
+	<div class="container-fluid" id="product-container">
+		<div class="row" id="banner-row">
+		<div class="col-md-6" id="about-col">
+			<img class="img-responsive rounded mx-auto d-block" src="https://www.revistadiabetes.org/wp-content/uploads/Subtipos-de-diabetes-tipo-2_1.jpg" alt="BLOG"/>
+		</div>
+		<div class="col-md-6" id="product-col2">
+			<ul>
+			<li>Living with diabetes requires diligent management of various aspects of health, including blood sugar levels, diet, and physical activity. However, it's crucial not to overlook the connection between diabetes and heart health. In this blog post, we will explore the link between diabetes and cardiovascular health, understand the increased risk of heart disease, and discuss strategies to maintain a healthy heart while managing diabetes effectively.
+			</li>
+			<li>
+				1. The Diabetes-Heart Disease Connection:
+				   - Explaining the increased risk of heart disease among individuals with diabetes.
+				   - Understanding the impact of high blood sugar levels on heart health.
+				   - Discussing the role of insulin resistance and inflammation in promoting cardiovascular complications.</li>
+			<li>2. Prevention and Management Strategies:
+				- Emphasizing the significance of a heart-healthy diet and its impact on diabetes management.
+				- Exploring the benefits of regular physical activity for both diabetes control and heart health.
+				- Discussing the importance of monitoring and managing blood pressure and cholesterol levels.
+			 </li>
+			<li>
+				3. Lifestyle Modifications:
+				   - Providing practical tips for reducing cardiovascular risks, such as smoking cessation and stress management techniques.
+				   - Exploring the benefits of weight management and its impact on diabetes and heart health.
+				   - Highlighting the importance of regular check-ups and screenings to detect early signs of heart disease.</li>
+			<li>Maintaining a healthy heart is essential for individuals with diabetes, as they face an increased risk of developing cardiovascular complications. By understanding the link between diabetes and heart health and implementing appropriate strategies, individuals can effectively manage their diabetes while reducing the risk of heart disease. Remember, adopting a heart-healthy lifestyle, working closely with healthcare professionals, and staying informed are key to achieving optimal overall health and well-being.</li>
+			</ul>
+		</div>
+		</div>
+	</div>
+	</section>
+	<hr />
+	<!-- doctors -->
+	<section id="doctors">
+		<h1 class="text-center">Doctors</h1>
+      <div class="container" >
+		<div class="row justify-content-center">
+			<div class="col-md-4" id="textcard">
+				<div class="card shadow" style="width: 20rem;">
+					<img class="card-img-top"  src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=2000" class="card-img-top" alt="doctor1">
+					<div class="card-body text-center">
+					  <h5 class="card-title">Name</h5>
+					  <p class="card-text">Homecare International provides personalized constitutional homeopathy treatments for all chronic and acute diseases that is safe, effective and has no side effects.</p>
+					  <a href="#" class="btn btn-primary">Contact</a>
+					</div>
+				  </div>
+			</div>
+			<div class="col-md-4" id="textcard">
+				<div class="card shadow" style="width: 20rem;">
+					<img class="card-img-top" src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=2000" class="card-img-top" alt="doctor2">
+					<div class="card-body text-center">
+					  <h5 class="card-title">Name</h5>
+					  <p class="card-text">Homecare International provides personalized constitutional homeopathy treatments for all chronic and acute diseases that is safe, effective and has no side effects.</p>
+					  <a href="#" class="btn btn-primary">Contact</a>
+					</div>
+				  </div>
+			</div>
+			<div class="col-md-4" id="textcard">
+				<div class="card shadow" style="width: 20rem;">
+					<img class="card-img-top" src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=2000" class="card-img-top" alt="doctor3">
+					<div class="card-body text-center">
+					  <h5 class="card-title">Name</h5>
+					  <p class="card-text">Homecare International provides personalized constitutional homeopathy treatments for all chronic and acute diseases that is safe, effective and has no side effects.</p>
+					  <a href="#" class="btn btn-primary">Contact</a>
+					</div>
+				  </div>
+			</div>
+		</div>
+	  </div>
+	  </section>
+	<!-- footer -->
+	<footer>
+	<section id="footer">
+	<section id="banner">
+		<div class="container-fluid" id="banner-container">
+		<div class="row" id="banner-row">
+			<div class="col-md-4" id="footer-col1">
+			<h3>My Website</h3>
+				
+<p>At Diabetes diary we believe that customers should always get easy-to-use, best in the kind and fast services.Diabetes diary has achieved standards which helps diabetes patients to achieve healthy
+</p>
+
+			</div>
+			<div class="col-md-4" id="footer-col2">
+			<h3>Contact Us</h3>
+				
+<p>Call Us-00000000000</p>
+<p>Email Us- diabetesdiary.com</p>
+
+			</div>
+
+			<div class="col-md-4" id="footer-col2">
+			<h3>Subscribe To Diabetes Diary</h3>
+			<form>
+				<div class="mb-3">
+				<input
+					type="email"
+					placeholder="Enter Your Email"
+					class="form-control"
+					id="exampleInputEmail1"
+					aria-describedby="emailHelp"
+				/>
+				<div id="emailHelp"
+					class="form-text">
+					We'll never share your email with anyone else.
+				</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			</div>
+		</div>
+		</div>
+	</section>
+	</section>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+	crossorigin="anonymous"></script>
+</body>
+</html>

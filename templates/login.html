@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/bulma-rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bulma-rtl.min.css' %}">
+</head>
+<body>
+    <h2 class="title is-2">Login</h2>
+    <form class="box" action="{% url 'login_view'  %}" method="POST">
+        {% csrf_token %}
+
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+            <input class="input" type="text" id="username" name="username" placeholder="enter your username" required>
+          </div>
+        </div>
+      
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" id="pass" name="pass" placeholder="********">
+          </div>
+        </div>
+        <a href="{% url 'forgot_password_view' %}" class="has-text-link-dark">forgot password ?</a>
+        <br>
+        <button class="button is-primary" type="submit">Sign in</button>
+      </form>
+      <a href="{% url 'signup_view' %}" class="has-text-link-dark">Not registered yet ?</a>
+</body>
+</html>

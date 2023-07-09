@@ -1,0 +1,184 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+/* navbar */ 
+body{
+	background-color: #0a193d;
+}
+.navbar-nav{
+	margin-right: 0 !important;
+	padding-right: 100px;
+}
+
+.navbar{
+	background-color: #0a193d;
+	color: white !important;
+}
+
+.nav-item a{
+	color: white !important;
+}
+
+.nav-item{
+	padding-left: 2px;
+}
+
+.navbar-brand{
+	color: white !important;
+	padding-left: 100px;
+}
+
+#navbar button{
+	color: white !important;
+}
+
+/* banner */
+
+#banner-container{
+	background-color:#0a193d;
+	color:#ffff !important;
+	padding-top: 120px;
+	padding-bottom: 120px;
+	
+}
+#banner-row img{
+	max-width: 90%;
+	height: auto;
+	display: block;
+	padding-left: 20px;
+}
+
+#banner-row h3, p{
+	padding-left: 50px;
+	padding-top: 50px;
+	text-align: center;
+}
+#banner-row p{
+	font-size: large;
+}
+#banner-row a{
+	background-color: #ffff !important;
+	color: #0a193d !important;
+	border: none;
+	margin-left: 20px;
+	margin-top: 20px;
+	
+}
+#banner-col{
+	padding-left: 20px;
+}
+/* service */
+#service{
+	padding-top: 50px;
+	padding-bottom: 120px;
+	background-color:#ffff;
+	color: #0a193d;
+}
+.container
+{
+	margin-top:8%;
+}
+#service h1{
+	padding-bottom: 70px;
+}
+.inner{
+overflow: hidden;
+}
+.inner img{
+	transition: all 1.5s ease;
+}
+.inner:hover img{
+	transform: scale(1.5);
+}
+.card{
+	transition: all 0.3s;
+}
+.card:hover{
+	transform: scale(1.15);
+}
+
+/* about */
+
+#about{
+	padding-top: 120px;
+	padding-bottom: 120px;
+    background-color: #0a193d;
+    color:#ffff;
+}
+
+#about h1{
+	padding-bottom: 70px;
+}
+
+#about-col ul{
+	padding-top: 50px;
+	padding-left: 50px;
+}
+
+#about-col ul li{
+	padding-top: 15px;
+	
+}
+
+/* blog */
+
+#blog{
+	padding-top: 120px;
+	padding-bottom: 120px;
+	background-color:#ffff;
+	color: #0a193d;
+}
+
+#blog h1{
+	padding-bottom: 70px;
+}
+
+#blog-col2 ul{
+	padding-top: 90px;
+}
+
+#blog-col2 ul li{
+	padding-top: 15px;
+}
+
+/* doctors */
+
+
+#doctors{
+	background-color:#0a193d;
+  padding-top: 120px;
+  padding-bottom: 120px;
+	color:#ffff;
+  }
+  
+  #doctors h1{
+  padding-bottom: 70px;
+  }
+  #textcard{
+	color:#0a193d;
+  }
+
+/* footer */
+.mb-3{
+padding-top: 10px;
+}
+
+/* media */
+@media only screen and (max-width: 987px){
+	.navbar-brand{
+		padding-left: 0px;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	#banner-row img{
+		padding-top: 20px;
+	}
+
+.doctors-col{
+	width: 33%;
+}
+
+}
