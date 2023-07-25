@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} blog {% endblock %}
+{% block content %} 
+
+    <h3>blog</h3>
+    {% for a in  articles %}
+        <div>
+            <h2><a href="">{{a.article_head}}</a></h2>
+            <br>
+            <div>
+                <a href="">{{a.user_written}}</a>
+            </div>
+            <div>
+                <h6>{{a.Date_written}}</h6>
+            </div>
+            <br>
+            <div>
+                <p>
+                    {{a.content}}
+                </p>
+            </div>
+        </div>
+      
+    {% endfor %}
+
+
+{% endblock %}
