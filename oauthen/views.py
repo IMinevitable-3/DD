@@ -6,18 +6,19 @@ from django.contrib import messages
 from django.db import IntegrityError
 from .models import User
 from .utilities import sendmail
-
-
-
+from django.contrib.auth.decorators import login_required
 
 def logout_view(request):
     logout(request) 
-    return render(request,home_view) 
+    return redirect(home_view)
 
-def profile_view(request):
-    return render(request,'user.html') 
+@login_required(login_url="/login")
+def dashboard_view(request):
+    return render(request,'user.html',context={}) 
+
 def home_view(request):
     return render(request,'index.html') 
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -26,7 +27,7 @@ def login_view(request):
 
         if user is not None :
             login(request, user)
-            return redirect(profile_view)
+            return redirect(dashboard_view)
         else :
             messages.error(request , "bad credentials") 
             return redirect(home_view)
@@ -71,4 +72,9 @@ def signup_view(request):
         return HttpResponseRedirect(reverse('home_view')) 
 
     return render(request,'signup.html') 
-
+def profile_view(request , name):
+    try :
+        query = User.objects.get(username=name) 
+    except :
+        return redirect(home_view) 
+    return render(request,'profile.html',context={"user":query}) 
