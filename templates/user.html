@@ -1,5 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %} dashboard {% endblock %}
+{% block resources %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="{% static 'js/show.js' %}" defer></script>
+<script src="{% static 'js/addmeal.js' %}" defer></script>
+{% endblock %}
 {% block content %} 
 
 {% if user.is_authenticated %}
@@ -35,7 +41,7 @@
                   </a>
           
                   <div class="navbar-dropdown">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href={% url 'profile_view' user.username %}>
                       profile
                     </a>
                     <a class="navbar-item">
@@ -67,8 +73,82 @@
           </nav>
     </div>
     <h1> welcome back{{  user.username }}!!!</h1>
-    
 
+    <div>
+      <canvas id="lineGraph" width="500" height="400"></canvas>
+
+    </div>
+    <script>
+      // Sample data for the line graph
+const data = {
+    datasets: [{
+        label: 'Sugar Levels (mg/dL)',
+        data: [
+            { x: '2023-07-25', y: 120 },
+            { x: '2023-07-26', y: 100 },
+            { x: '2023-07-27', y: 130 },
+            { x: '2023-07-28', y: 95 },
+            // Add more data points here...
+        ],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderWidth: 2,
+        fill: true,
+    }]
+};
+
+// Configuration options for the line graph
+const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        x: {
+            type: 'time', // Use time type for x-axis
+            time: {
+                unit: 'day', // Display data per day
+                displayFormats: {
+                    day: 'MMM D, YYYY', // Format for the x-axis labels (e.g., "Jul 27, 2023")
+                },
+                tooltipFormat: 'll', // Format for tooltip display (e.g., "Jul 27, 2023")
+            },
+            title: {
+                display: true,
+                text: 'Date',
+            },
+        },
+        y: {
+            title: {
+                display: true,
+                text: 'Sugar Levels (mg/dL)',
+            },
+        },
+    },
+};
+
+// Get the canvas element and create the line graph
+const ctx = document.getElementById('lineGraph').getContext('2d');
+const lineGraph = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: options,
+});
+
+
+    </script>
+
+    <div class="add-meal">
+      <button id="showFormButton">add meal</button>
+      <form id="myForm" style="display: none;">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <div id="inputContainer"></div>
+
+        <button type="button" id="addInputButton">Add Input</button>
+
+        <button type="submit">Submit</button>
+    </form>
+    </div>
 
 {% endif %}
 
