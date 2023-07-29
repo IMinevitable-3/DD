@@ -30,7 +30,7 @@ def login_view(request):
             return redirect(dashboard_view)
         else :
             messages.error(request , "bad credentials") 
-            return redirect(home_view)
+            return redirect(login_view)
     return render(request,'login.html')
 
 def forgot_password_view(request):
@@ -45,7 +45,8 @@ def forgot_password_view(request):
         new_password=sendmail(user.email)
         user.set_password(new_password)
         user.save()
-        return redirect(login_view) #need to inform user about sent email 
+        messages.info(request,"please check your registered mail for new password")
+        return redirect(login_view)
 
 
     return render(request,'forgot_password.html')

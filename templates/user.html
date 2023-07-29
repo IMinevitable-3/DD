@@ -3,8 +3,7 @@
 {% block title %} dashboard {% endblock %}
 {% block resources %} 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src="{% static 'js/show.js' %}" defer></script>
-<script src="{% static 'js/addmeal.js' %}" defer></script>
+<script src="{% static 'js/addelete.js' %}" defer></script>
 {% endblock %}
 {% block content %} 
 
@@ -136,19 +135,34 @@ const lineGraph = new Chart(ctx, {
 
     </script>
 
-    <div class="add-meal">
-      <button id="showFormButton">add meal</button>
-      <form id="myForm" style="display: none;">
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date">
 
-        <div id="inputContainer"></div>
 
-        <button type="button" id="addInputButton">Add Input</button>
+    <button onclick="toggleDiv()">add meal</button>
 
-        <button type="submit">Submit</button>
-    </form>
+    <div id="myDiv" style="display: none;">
+      <div>
+      <input type="date" id="dateInput">
+      <br>
+      <input type="text" id="taskInput" placeholder="Enter task">
+      <button onclick="addTask()">Add</button>
     </div>
+
+    <ul id="taskList"></ul>
+
+    <div>
+      <button onclick="submitTasks()">Submit Meals</button>
+    </div>
+
+    <script>
+      function toggleDiv() {
+        const myDiv = document.getElementById('myDiv');
+        if (myDiv.style.display === 'none') {
+          myDiv.style.display = 'block';
+        } else {
+          myDiv.style.display = 'none';
+        }
+      }
+    </script>
 
 {% endif %}
 
