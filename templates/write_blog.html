@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}  New Blog {% endblock %}
+
+{% block content %} 
+    <h1>ready to go </h1>
+    <form action="{% url 'write_blog_view' user.username %}" method="post">
+        {% csrf_token %}
+        <label for="title">title:</label>
+        <input type="text" id="title" name="title" >
+        <br>
+
+        <label for="content">Content:</label>
+        <br>
+        <textarea id="content" name="content" rows="4" cols="40"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}

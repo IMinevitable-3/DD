@@ -33,27 +33,24 @@
                 <a class="navbar-item">
                   XXXXXXX
                 </a>
+
+                <a class="navbar-item" href={% url 'settings_view' user.username %}>
+                  profile
+                </a>
+
+                <a class="navbar-item"  href={% url 'write_blog_view' user.username  %}>
+                  write a blog
+                </a>
+
+                  <a class="navbar-item">
+                  meal history
+                </a>
+
+                <a class="navbar-item" href={% url 'issue_view'  user.username %}>
+                  Report an issue
+                </a>
           
-                <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="navbar-link">
-                    More
-                  </a>
-          
-                  <div class="navbar-dropdown">
-                    <a class="navbar-item" href={% url 'profile_view' user.username %}>
-                      profile
-                    </a>
-                    <a class="navbar-item">
-                      XXXXXX
-                    </a>
-                    <a class="navbar-item">
-                      XXXXXXX
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                      Report an issue
-                    </a>
-                  </div>
+                
                 </div>
               </div>
           
@@ -71,7 +68,15 @@
             </div>
           </nav>
     </div>
-    <h1> welcome back{{  user.username }}!!!</h1>
+    <h1> welcome back {{  user.username }}!!!</h1>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 
     <div>
       <canvas id="lineGraph" width="500" height="400"></canvas>

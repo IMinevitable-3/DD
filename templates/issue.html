@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+ 
+{%  block title %} Report  the issue {% endblock %}
+
+{% block content %} 
+<form action="{% url 'issue_view' user.username %}" method="post">
+        {% csrf_token %}
+        
+        <label for="issues">Choose an issue:</label>
+        <br>
+        <select id="issues" name="issues">
+            <option value="bug">Bug</option>
+            <option value="feature">Feature Request</option>
+            <option value="support">Technical Support</option>
+            <option value="other">Other Issue</option>
+        </select>
+        <br>
+
+        <label for="content"> Describe Issue:</label>
+        <br>
+        <textarea id="content" name="content" rows="4" cols="40"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

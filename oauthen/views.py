@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect , HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.contrib import messages 
 from django.db import IntegrityError
-from .models import User
+from .models import User , issue 
 from .utilities import sendmail
 from django.contrib.auth.decorators import login_required
 
@@ -73,9 +73,54 @@ def signup_view(request):
         return HttpResponseRedirect(reverse('home_view')) 
 
     return render(request,'signup.html') 
-def profile_view(request , name):
+@login_required() 
+def settings_view(request , name):
     try :
         query = User.objects.get(username=name) 
     except :
         return redirect(home_view) 
+    
+    if request.method == 'POST':
+        user = get_object_or_404(User, username=name)
+        try :
+            user.first_name = request.POST.get('first_name')
+            user.last_name = request.POST.get('last_name')
+            user.mobile_number = request.POST.get('mobile_number')
+            user.date_of_birth = request.POST.get('date_of_birth')
+            user.diabetic = request.POST.get('diabetic') == 'yes'
+            user.gender = request.POST.get('gender')
+            user.country = request.POST.get('country')
+            user.height = request.POST.get('height')
+            user.weight = request.POST.get('weight')
+            user.mean_sugar_level = request.POST.get('mean_sugar_level')
+            user.username = name 
+        except:
+            messages.error(request,"enter valid data") 
+            return render(request,'profile.html' , context={"user":query})  
+
+        user.save()
+        messages.success(request,"profile updated") 
+        return render(request,'profile.html' , context={"user":query})  
+        
+
     return render(request,'profile.html',context={"user":query}) 
+
+@login_required()
+def issue_view(request,name):
+    if request.method == "POST" :
+        usr = User.objects.get(username=name) 
+        title = request.POST["issues"] 
+        desc  =request.POST["content"] 
+        user_issue = issue(author=usr,title=title,content=desc) 
+        user_issue.save() 
+        messages.success(request,"issue submitted successfully")
+        return redirect(dashboard_view) 
+
+    return render(request , "issue.html") 
+
+@login_required() 
+def delete_acct(request,name):
+    user = get_object_or_404(User, username=name) 
+    user.delete() 
+    messages.success(request,'account successfully deleted') 
+    return redirect(home_view) 
