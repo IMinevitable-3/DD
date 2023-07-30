@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} dashboard {% endblock %}
+{% block resources %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="{% static 'js/addelete.js' %}" defer></script>
+<script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css"
+/>
+{% endblock %}
+
+{% block content %}
+
+
+<div id="autocomplete" class="autocomplete">
+  <input class="autocomplete-input" />
+  <ul class="autocomplete-result-list"></ul>
+</div>
+<ul id="selected-values"></ul>
+
+<script>
+const selectedValuesList = document.getElementById('selected-values');
+  new Autocomplete('#autocomplete', {
+    search : input => {
+      const url = `/get-names?search=${input}`
+      return new Promise(resolve=>{
+        fetch(url)
+        .then(response=>response.json())
+        .then(data=>{
+          resolve(data.payload) 
+        })
+      })
+    },
+    renderResult :(result,propes)=>{
+        console.log(propes)
+        let group = ''
+        if(result.index%3==0){
+          group = `<li class="group">Group</li>`
+        }
+        return ` ${group}
+        <li ${propes}>
+            <div class="wiki-title">
+              ${result.name}
+              </div>
+        </li>
+        `
+      }
+  })
+</script>
+
+{% endblock %}

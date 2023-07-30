@@ -11,4 +11,6 @@ urlpatterns = [
     path('settings/<name>',views.settings_view,name="settings_view"),
     path('issue/<name>' ,views.issue_view,name="issue_view") ,
     path('delete/<name>' ,views.delete_acct,name="delete_acct"),
+    path('get-names',views.get_names,name="get_names"),
+    path('addmeal/<name>',views.addmeal,name="addmeal"),
 ]

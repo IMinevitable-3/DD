@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect , HttpResponse
+from django.http import HttpResponseRedirect , HttpResponse,JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.contrib import messages 
 from django.db import IntegrityError
-from .models import User , issue 
+from .models import User , issue ,Food
 from .utilities import sendmail
 from django.contrib.auth.decorators import login_required
 
@@ -124,3 +124,19 @@ def delete_acct(request,name):
     user.delete() 
     messages.success(request,'account successfully deleted') 
     return redirect(home_view) 
+
+
+def get_names(request):
+    search = request.GET.get('search') 
+    payload =[]
+    if search :
+        objs = Food.objects.filter(food_name__startswith=search)
+        payload =[{"name":obj.food_name} for obj in objs ]
+    return JsonResponse({
+        'status':True,
+        'payload':payload
+    })
+
+
+def addmeal(request,name):
+    return render(request,"addmeal.html") 

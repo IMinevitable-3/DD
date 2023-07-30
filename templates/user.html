@@ -4,6 +4,8 @@
 {% block resources %} 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script src="{% static 'js/addelete.js' %}" defer></script>
+<script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
+
 {% endblock %}
 {% block content %} 
 
@@ -30,8 +32,8 @@
                   Home
                 </a>
           
-                <a class="navbar-item">
-                  XXXXXXX
+                <a class="navbar-item" href="{% url 'addmeal' user.username %}">
+                  Add meal
                 </a>
 
                 <a class="navbar-item" href={% url 'settings_view' user.username %}>
@@ -83,92 +85,63 @@
 
     </div>
     <script>
-      // Sample data for the line graph
-const data = {
-    datasets: [{
-        label: 'Sugar Levels (mg/dL)',
-        data: [
-            { x: '2023-07-25', y: 120 },
-            { x: '2023-07-26', y: 100 },
-            { x: '2023-07-27', y: 130 },
-            { x: '2023-07-28', y: 95 },
-            // Add more data points here...
-        ],
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderWidth: 2,
-        fill: true,
-    }]
-};
+              // Sample data for the line graph
+        const data = {
+            datasets: [{
+                label: 'Sugar Levels (mg/dL)',
+                data: [
+                    { x: '2023-07-25', y: 120 },
+                    { x: '2023-07-26', y: 100 },
+                    { x: '2023-07-27', y: 130 },
+                    { x: '2023-07-28', y: 95 },
+                    // Add more data points here...
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                fill: true,
+            }]
+        };
 
-// Configuration options for the line graph
-const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-        x: {
-            type: 'time', // Use time type for x-axis
-            time: {
-                unit: 'day', // Display data per day
-                displayFormats: {
-                    day: 'MMM D, YYYY', // Format for the x-axis labels (e.g., "Jul 27, 2023")
+        // Configuration options for the line graph
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    type: 'time', // Use time type for x-axis
+                    time: {
+                        unit: 'day', // Display data per day
+                        displayFormats: {
+                            day: 'MMM D, YYYY', // Format for the x-axis labels (e.g., "Jul 27, 2023")
+                        },
+                        tooltipFormat: 'll', // Format for tooltip display (e.g., "Jul 27, 2023")
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date',
+                    },
                 },
-                tooltipFormat: 'll', // Format for tooltip display (e.g., "Jul 27, 2023")
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Sugar Levels (mg/dL)',
+                    },
+                },
             },
-            title: {
-                display: true,
-                text: 'Date',
-            },
-        },
-        y: {
-            title: {
-                display: true,
-                text: 'Sugar Levels (mg/dL)',
-            },
-        },
-    },
-};
+        };
 
-// Get the canvas element and create the line graph
-const ctx = document.getElementById('lineGraph').getContext('2d');
-const lineGraph = new Chart(ctx, {
-    type: 'line',
-    data: data,
-    options: options,
-});
-
-
+        // Get the canvas element and create the line graph
+        const ctx = document.getElementById('lineGraph').getContext('2d');
+        const lineGraph = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options,
+        });
     </script>
 
 
-
-    <button onclick="toggleDiv()">add meal</button>
-
-    <div id="myDiv" style="display: none;">
-      <div>
-      <input type="date" id="dateInput">
-      <br>
-      <input type="text" id="taskInput" placeholder="Enter task">
-      <button onclick="addTask()">Add</button>
-    </div>
-
-    <ul id="taskList"></ul>
-
-    <div>
-      <button onclick="submitTasks()">Submit Meals</button>
-    </div>
-
-    <script>
-      function toggleDiv() {
-        const myDiv = document.getElementById('myDiv');
-        if (myDiv.style.display === 'none') {
-          myDiv.style.display = 'block';
-        } else {
-          myDiv.style.display = 'none';
-        }
-      }
-    </script>
-
+   
 {% endif %}
 
 {% endblock %}
