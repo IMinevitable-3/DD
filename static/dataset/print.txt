@@ -1,0 +1,817 @@
+File: NutritionalFacts_Fruit_Vegetables_Seafood.csv
+ÊÊIronÊÊ
+Dietary Fiber
+Food and Serving
+Calcium
+Protein
+Chole-sterol
+Total Carbo-hydrate
+Calories
+Vitamin A
+Saturated Fat
+Sugars
+Food Type
+CaloriesÊfrom Fat
+Vitamin C
+Total Fat
+Sodium
+Potassium
+
+File: food.csv    1
+Data.Vitamins.Vitamin A - RAE
+Data.Major Minerals.Sodium
+Data.Riboflavin
+Data.Ash
+Data.Major Minerals.Calcium
+Data.Choline
+Data.Cholesterol
+Data.Household Weights.1st Household Weight
+Data.Protein
+Data.Vitamins.Vitamin B6
+Data.Carbohydrate
+Data.Refuse Percentage
+Data.Manganese
+Data.Water
+Nutrient Data Bank Number
+Data.Lutein and Zeaxanthin
+Data.Niacin
+Data.Fiber
+Data.Sugar Total
+Data.Major Minerals.Copper
+Data.Household Weights.1st Household Weight Description
+Data.Vitamins.Vitamin B12
+Data.Household Weights.2nd Household Weight
+Data.Major Minerals.Iron
+Description
+Data.Fat.Monosaturated Fat
+Category
+Data.Beta Carotene
+Data.Beta Cryptoxanthin
+Data.Major Minerals.Magnesium
+Data.Kilocalories
+Data.Thiamin
+Data.Pantothenic Acid
+Data.Vitamins.Vitamin K
+Data.Retinol
+Data.Major Minerals.Zinc
+Data.Household Weights.2nd Household Weight Description
+Data.Vitamins.Vitamin E
+Data.Fat.Polysaturated Fat
+Data.Major Minerals.Phosphorus
+Data.Vitamins.Vitamin A - IU
+Data.Alpha Carotene
+Data.Fat.Saturated Fat
+Data.Fat.Total Lipid
+Data.Lycopene
+Data.Vitamins.Vitamin C
+Data.Selenium
+Data.Major Minerals.Potassium
+
+File: Nutrition_Value_Dataset.csv   1
+Protein (g)
+Cholesterol (mg)
+Carbohydrates (g)
+Category
+Company
+Fiber (g)
+Total Fat (g)
+Sodium (mg)
+Saturated Fat (g)
+Energy (kCal)
+Product
+Trans Fat (g)
+Sugar (g)
+Per Serve Size
+
+File: food1.csv   1 
+Data.Vitamins.Vitamin A - RAE
+Data.Major Minerals.Sodium
+Data.Riboflavin
+Data.Ash
+Data.Major Minerals.Calcium
+Data.Choline
+Data.Cholesterol
+Data.Household Weights.1st Household Weight
+Data.Protein
+Data.Vitamins.Vitamin B6
+Data.Carbohydrate
+Data.Refuse Percentage
+Data.Manganese
+Data.Water
+Nutrient Data Bank Number
+Data.Lutein and Zeaxanthin
+Data.Niacin
+Data.Fiber
+Data.Sugar Total
+Data.Major Minerals.Copper
+Data.Household Weights.1st Household Weight Description
+Data.Vitamins.Vitamin B12
+Data.Household Weights.2nd Household Weight
+Data.Major Minerals.Iron
+Description
+Data.Fat.Monosaturated Fat
+Category
+Data.Beta Carotene
+Data.Beta Cryptoxanthin
+Data.Major Minerals.Magnesium
+Data.Kilocalories
+Data.Thiamin
+Data.Pantothenic Acid
+Data.Vitamins.Vitamin K
+Data.Retinol
+Data.Major Minerals.Zinc
+Data.Household Weights.2nd Household Weight Description
+Data.Vitamins.Vitamin E
+Data.Fat.Polysaturated Fat
+Data.Major Minerals.Phosphorus
+Data.Vitamins.Vitamin A - IU
+Data.Alpha Carotene
+Data.Fat.Saturated Fat
+Data.Fat.Total Lipid
+Data.Lycopene
+Data.Vitamins.Vitamin C
+Data.Selenium
+Data.Major Minerals.Potassium
+
+File: ABBREV.csv
+Phosphorus_(mg)
+Carbohydrt_(g)
+Cholestrl_(mg)
+GmWt_Desc1
+NDB_No
+Retinol_(Âµg)
+Calcium_(mg)
+Food_Folate_(Âµg)
+Vit_B6_(mg)
+Lycopene_(Âµg)
+Beta_Carot_(Âµg)
+Lut+Zea_ (Âµg)
+Thiamin_(mg)
+Vit_D_Âµg
+Vit_A_RAE
+Alpha_Carot_(Âµg)
+Ash_(g)
+Folate_DFE_(Âµg)
+Copper_mg)
+Riboflavin_(mg)
+Vit_A_IU
+Vit_K_(Âµg)
+GmWt_Desc2
+Protein_(g)
+Iron_(mg)
+Folate_Tot_(Âµg)
+Potassium_(mg)
+FA_Poly_(g)
+Fiber_TD_(g)
+Zinc_(mg)
+GmWt_1
+Sugar_Tot_(g)
+Beta_Crypt_(Âµg)
+Refuse_Pct
+Magnesium_(mg)
+Niacin_(mg)
+Vit_C_(mg)
+Vit_B12_(Âµg)
+Folic_Acid_(Âµg)
+Sodium_(mg)
+FA_Sat_(g)
+index
+Manganese_(mg)
+Shrt_Desc
+Selenium_(Âµg)
+GmWt_2
+Energ_Kcal
+Vit_E_(mg)
+FA_Mono_(g)
+Water_(g)
+Panto_Acid_mg)
+Lipid_Tot_(g)
+Vit_D_IU
+Choline_Tot_ (mg)
+
+File: pred_food.csv
+Sodium Content
+Protein
+Calories
+Suitable for Diabetes
+Suitable for Blood Pressure
+Calcium Content
+Magnesium Content
+Glycemic Index
+Fiber Content
+Food Name
+Fat
+Carbohydrates
+Potassium Content
+
+File: usda_branded_food_data.csv
+Cryptoxanthin, beta
+Vitamin B-12
+Phytosterols
+Methionine
+Retinol
+Sugars, added
+Copper, Cu
+Tocotrienol, beta
+20:4 c
+Vitamin A, IU
+Fatty acids, total saturated
+Tyrosine
+Campestanol
+Cryptoxanthin, alpha
+18:1-11 t (18:1t n-7)
+Selenium, Se
+22:1 t
+Carbohydrate, other
+Boron, B
+Histidine
+Maltose
+Carotene, beta
+Potassium, K
+Proline
+Alcohol, ethyl
+Total lipid (fat)
+Vitamin B-12, added
+Inulin
+18:1 c
+Vitamin D (D2 + D3), International Units
+20:1
+23:0
+18:2 n-6 c,c
+Cobalt, Co
+Phenylalanine
+trans-Lycopene
+Beta-sitostanol
+Tocotrienol, delta
+Lutein + zeaxanthin
+6:0
+Lactic acid
+13:0
+9:0
+Fiber, soluble
+Galactose
+Folic acid
+Threonine
+18:2 t not further defined
+14:1 t
+22:1 c
+18:2 CLAs
+22:1 n-9
+Tocotrienol, alpha
+Total fat (NLEA)
+Sucrose
+Calcium, Ca
+22:4
+18:2 c
+22:5 c
+Chromium, Cr
+20:2 n-6 c,c
+Specific Gravity
+25-hydroxycholecalciferol
+Riboflavin
+Fructose
+Choline, from sphingomyelin
+Vitamin C, total ascorbic acid
+Lysine
+18:1
+Pantothenic acid
+Protein
+cis-beta-Carotene
+Tryptophan
+Vitamin E
+20:0
+18:3i
+Theobromine
+7:0
+20:1 t
+20:3 n-3
+Phytoene
+Folate, DFE
+10-Formyl folic acid (10HCOFA)
+20:3 n-9
+22:1 n-11
+name
+12:0
+22:6 n-3 (DHA)
+22:0
+20:3 c
+Carbohydrate, by summation
+Sugars, Total NLEA
+Fiber, total dietary
+Iodine, I
+Choline, from glycerophosphocholine
+Stigmasterol
+20:5 n-3 (EPA)
+20:1 c
+Water
+22:2
+Magnesium, Mg
+Total dietary fiber (AOAC 2011.25)
+Brassicasterol
+18:3 c
+Serine
+Fatty acids, total trans-monoenoic
+14:1 c
+Thiamin
+8:0
+Tocopherol, beta
+22:3
+18:0
+21:0
+16:0
+20:2 c
+22:6 c
+18:2 i
+Vitamin D (D2 + D3)
+Phytofluene
+Glutamine
+Epigallocatechin-3-gallate
+18:4
+Fatty acids, total monounsaturated
+Fatty acids, total polyunsaturated
+Glucose (dextrose)
+15:0
+Sorbitol
+Iron, Fe
+Zeaxanthin
+18:2
+Cystine
+Phosphorus, P
+Choline, free
+Fatty acids, total trans-dienoic
+Zinc, Zn
+24:0
+Vitamin B-6
+5-Formyltetrahydrofolic acid (5-HCOH4
+Energy
+Vitamin E (alpha-tocopherol)
+Aspartic acid
+Leucine
+Vitamin E, added
+17:1 c
+Fatty acids, total trans
+Sulfur, S
+11:0
+20:4 n-6
+Fiber, insoluble
+Taurine
+Tocopherol, gamma
+Acetic acid
+Cysteine
+Alanine
+20:3
+Caffeine
+21:5
+Malic acid
+22:1
+Choline, from phosphotidyl choline
+Choline, total
+16:1 t
+17:1
+15:1
+20:4
+Hydroxyproline
+18:3 n-3 c,c,c (ALA)
+20:5 c
+Valine
+14:0
+12:1
+Vitamin D3 (cholecalciferol)
+Nickel, Ni
+18:3
+18:2 t,t
+16:1 c
+10:0
+20:3 n-6
+Ribose
+Fluoride, F
+Chlorine, Cl
+5-methyl tetrahydrofolate (5-MTHF)
+Vitamin D2 (ergocalciferol)
+Nitrogen
+Betaine
+18:1 t
+5:0
+Isoleucine
+16:1
+Manganese, Mn
+Folate, total
+Ash
+Inositol
+Folate, food
+Phytosterols, other
+17:0
+18:3 n-6 c,c,c
+22:5 n-3 (DPA)
+Fatty acids, total trans-polyenoic
+Glutamic acid
+Carbohydrate, by difference
+Vitamin E (label entry primarily)
+Total sugar alcohols
+Arginine
+Xylitol
+Campesterol
+24:1 c
+Delta-5-avenasterol
+Niacin
+Vitamin K (Menaquinone-4)
+Lycopene
+Vitamin K (phylloquinone)
+Lactose
+Cholesterol
+Beta-sitosterol
+Starch
+Vitamin A, RAE
+Carotene, alpha
+Glycine
+Citric acid
+14:1
+18:3 t
+cis-Lycopene
+Choline, from phosphocholine
+Sodium, Na
+Molybdenum, Mo
+4:0
+Sugars, total including NLEA
+trans-beta-Carotene
+Lutein
+Vitamin K (Dihydrophylloquinone)
+cis-Lutein/Zeaxanthin
+Biotin
+Tocopherol, delta
+Tocotrienol, gamma
+
+File: Food_GI_GL.csv
+
+glycemic_index(GI)
+product_name
+glycemic_load
+
+File: nutrition.csv
+
+vitamin_k
+histidine
+hydroxyproline
+sucrose
+magnesium
+tryptophan
+proline
+vitamin_a_rae
+lactose
+saturated_fat
+isoleucine
+folate
+fat
+cholesterol
+zink
+lucopene
+tyrosine
+glutamic_acid
+manganese
+arginine
+fiber
+alcohol
+thiamin
+maltose
+theobromine
+glucose
+saturated_fatty_acids
+phenylalanine
+name
+galactose
+carotene_alpha
+vitamin_a
+calcium
+leucine
+copper
+lutein_zeaxanthin
+threonine
+carbohydrate
+tocopherol_alpha
+vitamin_b12
+folic_acid
+aspartic_acid
+calories
+sugars
+phosphorous
+serving_size
+carotene_beta
+potassium
+glycine
+caffeine
+alanine
+total_fat
+niacin
+vitamin_b6
+methionine
+irom
+pantothenic_acid
+water
+lysine
+choline
+sodium
+serine
+selenium
+vitamin_c
+valine
+vitamin_e
+riboflavin
+cryptoxanthin_beta
+fatty_acids_total_trans
+fructose
+ash
+vitamin_d
+cystine
+protein
+polyunsaturated_fatty_acids
+monounsaturated_fatty_acids
+
+File: Indian_Food_DF.csv
+nutri_fat
+nutri_salt
+nutri_carbohydrate
+brand
+nutri_score
+name
+nutri_protein
+nutri_sugar
+nutri_satuFat
+nutri_fiber
+food_link
+nutri_energy
+processing_score
+
+File: Emoji Diet Nutritional Data (g) - EmojiFoods (g).csv
+Riboflavin (mg)
+Carbohydrates (g)
+Vitamin K (ug)
+Total Fiber (g)
+Saturated Fat (g)
+Vitamin B6 (mg)
+Vitamin A (IU)
+Total Fat (g)
+Choline (mg)
+Protein (g)
+emoji
+Cholesterol (mg)
+Potassium (g)
+name
+Zinc (mg)
+Iron (mg)
+Selenium (ug)
+Thiamin (mg)
+Vitamin C (mg)
+Folate (ug)
+Monounsaturated Fat (g)       
+Vitamin E (IU)
+Pantothenic Acid (mg)
+Copper (mg)
+Niacin (mg)
+Vitamin B12 (ug)
+Vitamin D (IU)
+Total Sugar (g)
+Manganese (mg)
+Calories (kcal)
+Magnesium (mg)
+Phosphorus (g)
+Sodium (g)
+Calcium (g)
+Polyunsaturated Fat (g)
+
+File: usda_foundation_food_data.csv
+Cryptoxanthin, beta
+Vitamin B-12
+Phytosterols
+Methionine
+Retinol
+Sugars, added
+Copper, Cu
+Tocotrienol, beta
+20:4 c
+Vitamin A, IU
+Fatty acids, total saturated
+Tyrosine
+Campestanol
+Cryptoxanthin, alpha
+18:1-11 t (18:1t n-7)
+Selenium, Se
+22:1 t
+Carbohydrate, other
+Boron, B
+Histidine
+Maltose
+Carotene, beta
+Potassium, K
+Proline
+Alcohol, ethyl
+Total lipid (fat)
+Vitamin B-12, added
+Inulin
+18:1 c
+Vitamin D (D2 + D3), International Units
+20:1
+23:0
+18:2 n-6 c,c
+Cobalt, Co
+Phenylalanine
+trans-Lycopene
+Beta-sitostanol
+Tocotrienol, delta
+Lutein + zeaxanthin
+6:0
+Lactic acid
+13:0
+9:0
+Fiber, soluble
+Galactose
+Folic acid
+Threonine
+18:2 t not further defined
+14:1 t
+22:1 c
+18:2 CLAs
+22:1 n-9
+Tocotrienol, alpha
+Total fat (NLEA)
+Sucrose
+Calcium, Ca
+22:4
+18:2 c
+22:5 c
+Chromium, Cr
+20:2 n-6 c,c
+Specific Gravity
+25-hydroxycholecalciferol
+Riboflavin
+Fructose
+Choline, from sphingomyelin
+Vitamin C, total ascorbic acid
+Lysine
+18:1
+Pantothenic acid
+Protein
+cis-beta-Carotene
+Tryptophan
+Vitamin E
+20:0
+18:3i
+Theobromine
+7:0
+20:1 t
+20:3 n-3
+Phytoene
+Folate, DFE
+10-Formyl folic acid (10HCOFA)
+20:3 n-9
+22:1 n-11
+name
+12:0
+22:6 n-3 (DHA)
+22:0
+20:3 c
+Carbohydrate, by summation
+Sugars, Total NLEA
+Fiber, total dietary
+Iodine, I
+Choline, from glycerophosphocholine
+Stigmasterol
+20:5 n-3 (EPA)
+20:1 c
+Water
+22:2
+Magnesium, Mg
+Total dietary fiber (AOAC 2011.25)
+Brassicasterol
+18:3 c
+Serine
+Fatty acids, total trans-monoenoic
+14:1 c
+Thiamin
+8:0
+Tocopherol, beta
+22:3
+18:0
+21:0
+16:0
+20:2 c
+22:6 c
+18:2 i
+Vitamin D (D2 + D3)
+Phytofluene
+Glutamine
+Epigallocatechin-3-gallate
+18:4
+Fatty acids, total monounsaturated
+Fatty acids, total polyunsaturated
+Glucose (dextrose)
+15:0
+Sorbitol
+Iron, Fe
+Zeaxanthin
+18:2
+Cystine
+Phosphorus, P
+Choline, free
+Fatty acids, total trans-dienoic
+Zinc, Zn
+24:0
+Vitamin B-6
+5-Formyltetrahydrofolic acid (5-HCOH4
+Energy
+Vitamin E (alpha-tocopherol)
+Aspartic acid
+Leucine
+Vitamin E, added
+17:1 c
+Fatty acids, total trans
+Sulfur, S
+11:0
+20:4 n-6
+Fiber, insoluble
+Taurine
+Tocopherol, gamma
+Acetic acid
+Cysteine
+Alanine
+20:3
+Caffeine
+21:5
+Malic acid
+22:1
+Choline, from phosphotidyl choline
+Choline, total
+16:1 t
+17:1
+15:1
+20:4
+Hydroxyproline
+18:3 n-3 c,c,c (ALA)
+20:5 c
+Valine
+14:0
+12:1
+Vitamin D3 (cholecalciferol)
+Nickel, Ni
+18:3
+18:2 t,t
+16:1 c
+10:0
+20:3 n-6
+Ribose
+Fluoride, F
+Chlorine, Cl
+5-methyl tetrahydrofolate (5-MTHF)
+Vitamin D2 (ergocalciferol)
+Nitrogen
+Betaine
+18:1 t
+5:0
+Isoleucine
+16:1
+Manganese, Mn
+Folate, total
+Ash
+Inositol
+Folate, food
+Phytosterols, other
+17:0
+18:3 n-6 c,c,c
+22:5 n-3 (DPA)
+Fatty acids, total trans-polyenoic
+Glutamic acid
+Carbohydrate, by difference
+Vitamin E (label entry primarily)
+Total sugar alcohols
+Arginine
+Xylitol
+Campesterol
+24:1 c
+Delta-5-avenasterol
+Niacin
+Vitamin K (Menaquinone-4)
+Lycopene
+Vitamin K (phylloquinone)
+Lactose
+Cholesterol
+Beta-sitosterol
+Starch
+Vitamin A, RAE
+Carotene, alpha
+Glycine
+Citric acid
+14:1
+18:3 t
+cis-Lycopene
+Choline, from phosphocholine
+Sodium, Na
+Molybdenum, Mo
+4:0
+Sugars, total including NLEA
+trans-beta-Carotene
+Lutein
+Vitamin K (Dihydrophylloquinone)
+cis-Lutein/Zeaxanthin
+Biotin
+Tocopherol, delta
+Tocotrienol, gamma
+

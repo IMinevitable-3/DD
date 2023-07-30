@@ -8,6 +8,3 @@ def sendmail(to_mail):
     message = "your new password" + pss + "\nthis is bot generated email\ndo not reply"
     send_mail(head , message , settings.EMAIL_HOST_USER , [to_mail] )
     return pss 
-
-
-    

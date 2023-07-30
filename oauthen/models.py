@@ -23,4 +23,13 @@ class issue(models.Model) :
     title = models.TextField(max_length=30) 
     content=models.TextField() 
     status = models.BooleanField(default=False)
-    
+
+class Food(models.Model):
+    food_name = models.TextField(max_length=100)
+    standard  = models.TextField(max_length=40,null=True) 
+    carb      = models.IntegerField(null=True)
+    sugar     = models.IntegerField(null=True)
+    fat       = models.IntegerField(null=True) 
+    calorie   = models.IntegerField(null=True)  
+
+     
