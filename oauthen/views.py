@@ -127,16 +127,28 @@ def delete_acct(request,name):
 
 
 def get_names(request):
-    search = request.GET.get('search') 
-    payload =[]
-    if search :
+    search = request.GET.get('search')
+    payload = []
+    if search:
         objs = Food.objects.filter(food_name__startswith=search)
-        payload =[{"name":obj.food_name} for obj in objs ]
+        for obj in objs :
+            payload.append({'name':obj.food_name})
     return JsonResponse({
-        'status':True,
-        'payload':payload
+        'status': True,
+        'payload': payload
     })
 
 
 def addmeal(request,name):
+
+    if request.method == 'POST':
+        data = request.POST
+        selected_values = data.getlist('selectedValues[]')  
+        selected_date = data.get('selectedDate')            
+
+        print('Received selected values:', selected_values)
+        print('Received selected date:', selected_date)
+
+        return JsonResponse({'status': 'success'})
+
     return render(request,"addmeal.html") 
