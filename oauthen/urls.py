@@ -13,4 +13,5 @@ urlpatterns = [
     path('delete/<name>' ,views.delete_acct,name="delete_acct"),
     path('get-names',views.get_names,name="get_names"),
     path('addmeal/<name>',views.addmeal,name="addmeal"),
+    path('dietplan',views.dietplan,name='dietplan')
 ]

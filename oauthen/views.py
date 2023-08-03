@@ -11,14 +11,14 @@ from django.contrib.auth.decorators import login_required
 def logout_view(request):
     logout(request) 
     return redirect(home_view)
-
 @login_required(login_url="/login")
 def dashboard_view(request):
     return render(request,'user.html',context={}) 
 
 def home_view(request):
     return render(request,'index.html') 
-
+def dietplan(request):
+    return render(request,'diet.html')
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']

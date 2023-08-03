@@ -1,30 +1,186 @@
-{% extends "base.html" %}
-
+<!DOCTYPE html>
 {% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity=
+"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous"/>
+	<!--<link rel="stylesheet" href="{% static 'css/blog.css' %}" />-->
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href= "https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet"/>
+  <style>
+    *{
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+body{
+  background-color: white;
+}
+/* navbar */ 
+.navbar-nav{
+	margin-right: 0 !important;
+	padding-right: 100px;
+}
 
-{% block title %}  New Blog {% endblock %}
+.navbar{
+	background-color: #0a193d;
+	color: white !important;
+}
 
-{% block content %} 
-    <h1>ready to go </h1>
-    <form action="{% url 'write_blog_view' user.username %}" method="post">
-        {% csrf_token %}
-        <label for="title">title:</label>
-        <input type="text" id="title" name="title" >
-        <br>
+.nav-item a{
+	color: white !important;
+}
 
-        <label for="content">Content:</label>
-        <br>
-        <textarea id="content" name="content" rows="4" cols="40"></textarea>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+.nav-item{
+	padding-left: 2px;
+}
 
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+.navbar-brand{
+	color: white !important;
+	padding-left: 100px;
+}
 
-{% endblock %}
+#navbar button{
+	color: white !important;
+}
+#writeblog h1{
+  padding-bottom: 40px;
+  padding-top: 20px;
+	font-weight: bolder;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
+}
+.container{
+            display:flex;
+             justify-content: center;
+             align-items: center;
+             min-height: 90vh;
+        }
+        .blogclass{
+          width: 450px;
+             height: 650px;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+           padding: 0 15px 0 15px;
+           border: 2px solid rgba(255,255,2550.5);
+           border-radius: 20px;
+           position: relative;
+        }
+        .title{
+	font-weight: bold;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
+        }
+        .submit{
+          padding: 10px;
+          border-radius: 20px;
+          background-color: #0a193d;
+          color: white;
+        }
+        #title{
+          padding: 10px;
+          border-radius: 20px;
+        }
+        #content{
+          padding: 30px;
+          border-radius: 20px;
+        }
+  </style>
+</head>
+<body>
+  <section id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light fixed top">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home_view' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+          <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+          <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+        </svg> Diabetes Diary</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"
+        id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+        <li class="nav-item">
+          <a class="nav-link active"
+          aria-current="page"
+          href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="#service">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="#about">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="{% url 'blog_view' %}">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="#doctors">Our Doctors</a>
+        </li>
+              <li class="nav-item">
+          <a class="nav-link"
+          href="#footer">Contact us</a>
+        </li>
+        </ul>
+        <a href="{% url 'login_view' %}">login 
+        {% comment %} <form class="d-flex" role="search">
+           <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg> Login</button>
+          </form> {% endcomment %}
+      </a>
+      </div>
+      </div>
+  </nav>
+    </section>
+    <section id="writeblog">
+      <div class="container">
+        <div class="blogclass">
+          <h1 class="text-center">Your Feedback</h1>
+      <form action="{% url 'write_blog_view' user.username %}" method="post">
+          {% csrf_token %}
+          <div class="row g-3 align-items-center">
+          <label for="title" class="title">TITLE:</label>
+          <input type="text" id="title" name="title" >
+          <br>
+          
+          <label for="content" class="title">CONTENT:</label>
+          <br>
+          <textarea id="content" name="content" rows="4" cols="40"></textarea>
+          <br>
+          <input type="submit" value="Submit" class="submit">
+          </div>
+      </form>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
+    </div>
+    </section>
+</body>
+</html>
