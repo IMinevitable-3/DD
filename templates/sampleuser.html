@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} dashboard {% endblock %}
+{% block resources %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="{% static 'js/addelete.js' %}" defer></script>
+<script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity=
+"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href= "https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet"/>
+{% endblock %}
+{% block content %} 
+
+{% if user.is_authenticated %}
+    <!-- <form action="{%  url 'logout_view' %}" method=""><button type="submit">logout</button></form> -->
+
+    <div class="navbar">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="https://bulma.io">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+                    <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+                    <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+                  </svg> Diabetes Diary
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item" href="{% url 'home_view' %}">
+                  Home
+                </a>
+          
+                <a class="navbar-item" href="{% url 'addmeal' user.username %}">
+                  Add meal
+                </a>
+
+                <a class="navbar-item" href={% url 'settings_view' user.username %}>
+                  profile
+                </a>
+
+                <a class="navbar-item"  href={% url 'write_blog_view' user.username  %}>
+                  write a blog
+                </a>
+
+                  <a class="navbar-item">
+                  meal history
+                </a>
+
+                <a class="navbar-item" href={% url 'issue_view'  user.username %}>
+                  Report an issue
+                </a>
+          
+                
+                </div>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <form action="{% url 'logout_view' %}" method="">
+                        <button class="button is-primary" type="submit">
+                        Log out
+                        </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </div>
+    <h1> welcome back {{  user.username }}!!!</h1>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div>
+      <canvas id="lineGraph" width="500" height="400"></canvas>
+
+    </div>
+    <script>
+              // Sample data for the line graph
+        const data = {
+            datasets: [{
+                label: 'Sugar Levels (mg/dL)',
+                data: [
+                    { x: '2023-07-25', y: 120 },
+                    { x: '2023-07-26', y: 100 },
+                    { x: '2023-07-27', y: 130 },
+                    { x: '2023-07-28', y: 95 },
+                    // Add more data points here...
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                fill: true,
+            }]
+        };
+
+        // Configuration options for the line graph
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    type: 'time', // Use time type for x-axis
+                    time: {
+                        unit: 'day', // Display data per day
+                        displayFormats: {
+                            day: 'MMM D, YYYY', // Format for the x-axis labels (e.g., "Jul 27, 2023")
+                        },
+                        tooltipFormat: 'll', // Format for tooltip display (e.g., "Jul 27, 2023")
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date',
+                    },
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Sugar Levels (mg/dL)',
+                    },
+                },
+            },
+        };
+
+        // Get the canvas element and create the line graph
+        const ctx = document.getElementById('lineGraph').getContext('2d');
+        const lineGraph = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options,
+        });
+    </script>
+
+
+   
+{% endif %}
+
+{% endblock %}

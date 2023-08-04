@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,5 +41,80 @@
         {% endfor %}
       </ul>
       {% endif %}
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}"> 
+    <link rel="stylesheet"
+ href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/bulma-rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bulma-rtl.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+    <style>
+  
+      .button.is-primary {
+        background-color: #0a193d;
+      }
+
+ 
+      .box {
+        border: 1px solid #999; 
+        border-radius: 5px;
+        padding: 20px;
+      }
+
+      body {
+        background-color: #f0f8ff; 
+      }
+
+      .input {
+        border: 3px solid #ccc;
+      }
+      .title.is-2.has-text-centered {
+        color: #0a193d;
+      }      
+    </style>
+</head>
+<body>
+    <div class="columns is-centered is-vcentered" style="height: 100vh">
+        <div class="column is-one-third">
+            <h2 class="title is-2 has-text-centered">Login</h2>
+            <form class="box" action="{% url 'login_view'  %}" method="POST">
+                {% csrf_token %}
+
+                <div class="field">
+                  <label class="label">Username</label>
+                  <div class="control">
+                    <input class="input" type="text" id="username" name="username" placeholder="enter your username" required>
+                  </div>
+                </div>
+              
+                <div class="field">
+                  <label class="label">Password</label>
+                  <div class="control">
+                    <input class="input" type="password" id="pass" name="pass" placeholder="****">
+                  </div>
+                </div>
+                <a href="{% url 'forgot_password_view' %}" class="has-text-link-dark">forgot password ?</a>
+                <br>
+                <button class="button is-primary" type="submit">Sign in</button>
+              </form>
+              <a href="{% url 'signup_view' %}" class="has-text-link-dark">Not registered yet ?</a>
+
+              {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+        </div>
+    </div>
 </body>
 </html>

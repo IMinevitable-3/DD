@@ -109,37 +109,26 @@
                 <li class="nav-item">
                     <a class="nav-link active"
                     aria-current="page"
-                    href="#">Home</a>
+                    href="{% url 'home_view' %}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                    href="#service">Services</a>
+                    href="{% url 'addmeal' user.username %}">ADD MEAL</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                    href="#about">About Us</a>
+                    href="{% url 'write_blog_view' user.username  %}">WRITE BLOG</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                    href="{% url 'blog_view' %}">Blog</a>
+                    href="#">MEAL HISTORY</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                    href="#doctors">Our Doctors</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                    href="#footer">Contact us</a>
+                    href="{% url 'issue_view'  user.username %}">REPORT</a>
                 </li>
                 </ul>
-                <a href="{% url 'login_view' %}">login 
-                {% comment %} <form class="d-flex" role="search">
-             <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </svg> Login</button>
-            </form> {% endcomment %}
-            </a>
+                
             </div>
         </div>
     </nav>
