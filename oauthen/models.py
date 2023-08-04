@@ -32,4 +32,7 @@ class Food(models.Model):
     fat       = models.IntegerField(null=True) 
     calorie   = models.IntegerField(null=True)  
 
-     
+class MealLog(models.Model):
+    fname = models.ForeignKey(Food,on_delete=models.CASCADE) 
+    uname = models.ForeignKey(User,on_delete=models.CASCADE)
+    date = models.DateField()  

@@ -54,6 +54,7 @@ removeButton.addEventListener('click', function () {
 
 li.appendChild(removeButton);
 selectedValuesList.appendChild(li);
+document.getElementById('autocomplete').value = '';
 }
 
 
@@ -68,15 +69,4 @@ addToSelectedList(selectedValue);
 });
 
 
-document.getElementById('submit-button').addEventListener('click', function () {
-const selectedValuesList = document.getElementById('selected-values');
-const selectedDate = document.getElementById('selected-date').value;
 
-const selectedValues = Array.from(selectedValuesList.children)
-    .map(li => li.textContent);
-
-
-console.log('Selected Values:', selectedValues);
-console.log('Selected Date:', selectedDate);
-
-});

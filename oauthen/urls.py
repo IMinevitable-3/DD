@@ -1,5 +1,4 @@
-from django.contrib import admin
-from django.urls import path , include 
+from django.urls import path 
 from . import views
 urlpatterns = [
     path('',views.home_view,name = "home_view"),
@@ -13,4 +12,6 @@ urlpatterns = [
     path('delete/<name>' ,views.delete_acct,name="delete_acct"),
     path('get-names',views.get_names,name="get_names"),
     path('addmeal/<name>',views.addmeal,name="addmeal"),
+    path('compute/' , views.compute,name="compute"),
+    path('<path:not_found>/', views.not_found_view),
 ]

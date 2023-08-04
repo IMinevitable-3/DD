@@ -11,19 +11,69 @@
 {% endblock %}
 
 {% block content %}
+{% csrf_token %}
 
-  <form  method="post">
-
-    <label for="selected-date">Select a date:</label>
+    <label  id = "casual" for="selected-date"  data-user="{{ user }}">Select a date:</label>
     <input type="date" id="selected-date">
     <br>
     <input type="text" id="autocomplete" placeholder="Search for names...">
+    <!-- <button id="clearButton">Clear</button> -->
+
     <ul id="suggestion-list"></ul>
 
     <ul id="selected-values"></ul>
 
-    <button id="submit-button"  type="submit">Submit List</button>
-  </form>
+    <button id="submit-button" >Submit List</button>
+
+  <script>
+const myElement = document.getElementById('casual');
+const user = myElement.dataset.user;
+
+document.getElementById('submit-button').addEventListener('click', function () {
+    const csrfToken = '{{ csrf_token }}';
+
+    const selectedDate = document.getElementById('selected-date').value;
+
+    const selectedValuesList = document.getElementById('selected-values');
+    const selectedValues = Array.from(selectedValuesList.children)
+        .map(li => li.textContent.replace('Remove', '')); // Remove the "Remove" suffix
+    console.log(selectedValues);
+
+    const data = {
+        food: selectedValues,
+        date: selectedDate,
+        usr: user,
+    };
+
+    fetch('/compute/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response from the Django view if needed
+            alert("data submitted successfully")
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error sending data to Django view:', error);
+        });
+});
+
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     const inputElement = document.getElementById("autocomplete");
+//     const clearButton = document.getElementById("clearButton");
+
+//     clearButton.addEventListener("click", function() {
+//       inputElement.value = "";
+//     });
+//   });
+//   </script>
 
 
 {% endblock %}

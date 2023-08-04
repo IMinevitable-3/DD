@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('secret_key')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+print(ALLOWED_HOSTS)
 
 # Application definition
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'oauthen',
     'blog',
+    'sekizai',
 ]
 
 MIDDLEWARE = [

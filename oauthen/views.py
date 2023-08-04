@@ -1,12 +1,17 @@
+import json
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect , HttpResponse,JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.contrib import messages 
 from django.db import IntegrityError
-from .models import User , issue ,Food
-from .utilities import sendmail
+from .models import User , issue ,Food ,MealLog
+from .utilities import sendmail 
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
+def not_found_view(request, not_found):
+    return HttpResponse(f"Page not found: {not_found}", status=404)
 
 def logout_view(request):
     logout(request) 
@@ -14,7 +19,25 @@ def logout_view(request):
 
 @login_required(login_url="/login")
 def dashboard_view(request):
-    return render(request,'user.html',context={}) 
+    user = request.user 
+    meal_logs = MealLog.objects.filter(uname=user)
+    data = {} 
+    for meal in meal_logs :
+        date_str = meal.date.strftime("%Y-%m-%d")
+        print(meal.fname)
+        foo_obj = meal.fname #get the food object
+        if foo_obj.sugar != None :
+            x = foo_obj.sugar
+        else :
+            x = foo_obj.carb 
+        if date_str in data :
+            data[date_str] += x
+        else :
+            data[date_str] = x 
+
+    data = json.dumps(data)
+
+    return render(request,'user.html',context={"data":data} ) 
 
 def home_view(request):
     return render(request,'index.html') 
@@ -94,11 +117,11 @@ def settings_view(request , name):
             user.weight = request.POST.get('weight')
             user.mean_sugar_level = request.POST.get('mean_sugar_level')
             user.username = name 
+            user.save()
         except:
             messages.error(request,"enter valid data") 
             return render(request,'profile.html' , context={"user":query})  
 
-        user.save()
         messages.success(request,"profile updated") 
         return render(request,'profile.html' , context={"user":query})  
         
@@ -138,17 +161,32 @@ def get_names(request):
         'payload': payload
     })
 
-
+@login_required()
 def addmeal(request,name):
+    return render(request,"addmeal.html",context={"user":name})  
 
+@login_required()
+def compute(request):
     if request.method == 'POST':
-        data = request.POST
-        selected_values = data.getlist('selectedValues[]')  
-        selected_date = data.get('selectedDate')            
+        try:
+            data = json.loads(request.body)
+            selected_foods = data.get('food')
+            username = data.get('usr')
+            date = data.get('date')
 
-        print('Received selected values:', selected_values)
-        print('Received selected date:', selected_date)
+            user_object = get_object_or_404(User, username=username)
 
-        return JsonResponse({'status': 'success'})
+            for food_name in selected_foods:
+                food_name = food_name.replace('Remove', '').strip()
 
-    return render(request,"addmeal.html") 
+                food_object = get_object_or_404(Food, food_name=food_name)
+
+                meal_log = MealLog(fname=food_object, uname=user_object, date=date)
+                meal_log.save()
+
+            return JsonResponse({'status': 'success', 'message': 'MealLog(s) added successfully'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)})
+
+    # Return an error response for invalid request method
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
