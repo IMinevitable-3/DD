@@ -35,19 +35,15 @@
                   Add meal
                 </a>
 
-                <a class="navbar-item" href={% url 'settings_view' user.username %}>
+                <a class="navbar-item" href="{% url 'settings_view' user.username %}">
                   profile
                 </a>
 
-                <a class="navbar-item"  href={% url 'write_blog_view' user.username  %}>
+                <a class="navbar-item"  href="{% url 'write_blog_view' user.username  %}">
                   write a blog
                 </a>
 
-                  <a class="navbar-item">
-                  meal history
-                </a>
-
-                <a class="navbar-item" href={% url 'issue_view'  user.username %}>
+                <a class="navbar-item" href="{% url 'issue_view'  user.username %}">
                   Report an issue
                 </a>
           
@@ -70,7 +66,7 @@
           </nav>
     </div>
     <h1> welcome back {{  user.username }}!!!</h1>
-
+    <h2>your sugar level for today : {{ count }}</h2>
     {% if messages %}
     <ul class="messages">
       {% for message in messages %}
@@ -86,7 +82,7 @@
             height: 150px; 
             margin: 0 auto; 
         } 
-        {% comment %} style here for graph  {% endcomment %}
+        /* {% comment %} style here for graph  {% endcomment %} */
     </style>
 
        <canvas id="myChart" ></canvas>
@@ -125,6 +121,18 @@
             }
         });
     </script>
+
+    <div  id = "meallog">
+      <h1>Your meal history</h1>
+      {% for date, items in meal.items %}
+          <h2>{{ date }}</h2>
+          <ul>
+              {% for item in items %}
+                  <li>{{ item }}</li>
+              {% endfor %}
+          </ul>
+      {% endfor %}
+    </div>
      
    
 {% endif %}

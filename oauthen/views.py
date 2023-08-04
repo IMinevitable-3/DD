@@ -1,3 +1,4 @@
+from datetime import date
 import json
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect , HttpResponse,JsonResponse
@@ -22,22 +23,28 @@ def dashboard_view(request):
     user = request.user 
     meal_logs = MealLog.objects.filter(uname=user)
     data = {} 
+    y = {}
+    today = 0
+    present_date = date.today()
     for meal in meal_logs :
         date_str = meal.date.strftime("%Y-%m-%d")
-        print(meal.fname)
         foo_obj = meal.fname #get the food object
         if foo_obj.sugar != None :
             x = foo_obj.sugar
         else :
             x = foo_obj.carb 
         if date_str in data :
+            y[date_str].append(foo_obj.food_name)
             data[date_str] += x
         else :
+            y[date_str] = [foo_obj.food_name] 
             data[date_str] = x 
-
+        if present_date == date_str :
+            today+=x 
     data = json.dumps(data)
 
-    return render(request,'user.html',context={"data":data} ) 
+
+    return render(request,'user.html',context={"data":data , "meal":y,"count":today} ) 
 
 def home_view(request):
     return render(request,'index.html') 
