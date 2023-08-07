@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dietplan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity=
+"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous"/>
+	<link rel="stylesheet" href="{% static 'css/diet.css' %}" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href= "https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <section id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="web.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+            <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+            <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+          </svg> Diabetes Diary</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                    <a class="nav-link"
+                    href="{% url 'home_view' %}">HOME</a>
+                </li>
+                </ul>
+                <a href="{%  url 'login_view' %}"><form class="d-flex" role="search" action="{% url 'login_view' %}">
+             <button class="btn btn-primary" type="submit" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg> Login</button>
+            </form></a>
+            </div>
+        </div>
+    </nav>
+        </section>
+        <!---diet--->
+        <section>
+          <div class="container-fluid" id="banner">
+            <div class="row" id="banner-row">
+            <div class="col-md-6" id="banner-col">
+              <h3 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Healthy & Balanced Meal Plan</h3>
+              <p class="lead">For people with diabetes, it's important to have a well-balanced and controlled diet to help manage blood sugar levels.
+                Food should be balanced, containing a combination of protein, healthy fats, and fiber-rich carbohydrates to prevent rapid spikes in blood sugar. Here's a suggested menu for diabetes patients from Sunday to Saturday.</p>
+            </div>
+            <div class="col-md-6" id="banner-col2">
+              <img class="img-responsive rounded mx-auto d-block" src="https://www.pngall.com/wp-content/uploads/5/Healthy-Food-Diet.png" alt="PIC"/>
+            </div>
+            </div>
+          </div>
+<!----table-->
+<section>
+  <div class="container">
+    <div class="table-responsive">
+    <table class="table table-bordered border-primary table-hover">
+        <thead>
+          <tr class="heading">
+            <th scope="col">Meals</th>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="meals">Breakfast</th>
+            <td><ul>
+              <li>Scrambled eggs with spinach and tomatoes</li>
+              <li>Whole-grain toast or a small portion of sweet potato</li>
+              <li>A small bowl of mixed berries</li>
+            </ul></td>
+            <td><ul>
+              <li>Greek yogurt with a sprinkle of cinnamon</li>
+              <li>Chopped walnuts or almonds</li>
+              <li>Sliced apple or pear</li>
+            </ul></td>
+            <td><ul>
+              <li>Oatmeal or unsweetened almond milk</li>
+              <li>Topped with sliced bananas and a few crushed almonds or chia seeds</li>
+            </ul></td>
+            <td><ul>
+              <li>Avocado toast on whole-grain bread</li>
+              <li>Poached or boiled egg on top</li>
+              <li>Sliced cucumber or a side of cherry tomatoes</li>
+            </ul></td>
+            <td><ul>
+              <li>Smoothie: Spinach, kale, or mixed greens blended with unsweetened almond milk</li>
+             <li> A handful of frozen berries and half a banana for natural sweetness</li>
+             <li>Optional: Add a scoop of protein powder (without added sugars)</li>
+            </ul></td>
+            <td><ul>
+             <li>Low-sodium smoked salmon or turkey slices</li>
+<li> Whole-grain crackers or rice cakes</li>
+<li> Sliced bell peppers and carrots on the side</li>
+            </ul></td>
+            <td><ul>
+             <li> Cottage cheese or tofu with a drizzle of olive oil and a sprinkle of black pepper</li>
+  <li>Whole-grain toast or a small serving of quinoa</li>
+<li>Fresh fruit salad (mix of berries, melon, and kiwi)</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <th scope="row" class="meals">Mid-morning snack</th>
+            <td><ul>
+              <li>1 small apple or pear</li>
+<li>1 ounce (about 28g) of unsalted mixed nuts (almonds, walnuts, and pistachios)</li>
+            </ul></td>
+            <td><ul>
+             <li> Carrot sticks or cucumber slices</li>
+<li>Hummus for dipping</li>
+            </ul></td>
+            <td><ul>
+             <li> 1 hard-boiled egg</li>
+<li> A small bunch of grapes</li>
+
+            </ul></td>
+            <td><ul>
+             <li> 1 small orange</li>
+<li> 1-2 tablespoons of natural peanut butter (without added sugars)</li>
+            </ul></td>
+            <td><ul>
+             <li>1/2 cup of low-fat cottage cheese</li>
+<li> Cherry tomatoes or baby carrots on the side</li>
+            </ul></td>
+            <td><ul>
+             <li> 1 small banana</li>
+<li> 1 ounce (about 28g) of cheese (such as cheddar or mozzarella)</li>
+            </ul></td>
+            <td><ul>
+              <li>1/4 cup of mixed unsalted nuts and seeds (almonds, pumpkin seeds, sunflower seeds)</li>
+<li>1/4 cup of fresh blueberries or raspberries</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <th scope="row" class="meals">Lunch</th>
+            <td><ul>
+             <li> Grilled chicken breast or tofu</li>
+              <li> Quinoa salad with mixed vegetables (e.g., bell peppers, cucumbers, cherry tomatoes)</li>
+              <li>Light vinaigrette dressing (olive oil, lemon juice, and herbs)</li>
+            </ul></td>
+            <td><ul>
+              <li> Mixed greens salad with sliced hard-boiled eggs</li>
+                <li>Avocado slices and cherry tomatoes</li>
+                  <li> Grilled shrimp or salmon</li>
+                    <li>Dressing made with olive oil and balsamic vinegar</li>
+            </ul></td>
+            <td><ul>
+              <li> Turkey or vegetable wrap with a whole-grain tortilla</li>
+                <li> Hummus or mashed avocado spread</li>
+<li>Lettuce, cucumber, and bell pepper slices as fillings</li>
+            </ul></td>
+            <td><ul>
+              <li> Lentil or black bean soup</li>
+                <li> A side of roasted vegetables (e.g., broccoli, cauliflower, and carrots)</li>
+            </ul></td>
+            <td><ul>
+              <li>Grilled or baked fish (e.g., cod, tilapia) or a vegetarian alternative</li>
+              <li>Steamed asparagus or green beans</li>
+                <li> Quinoa or brown rice</li>
+            </ul></td>
+            <td><ul>
+              <li>  Grilled chicken or tofu salad with mixed greens</li>
+                <li> Sliced strawberries or mandarin oranges</li>
+                  <li> Feta or goat cheese (in moderation)</li>
+
+            </ul></td>
+            <td><ul>
+              <li>  Stir-fried vegetables (e.g., broccoli, bell peppers, snap peas) with tofu or lean beef</li>
+                <li> Cauliflower rice or brown rice as the bas</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <th scope="row" class="meals">Snacks</th>
+            <td><ul>
+             <li>Greek yogurt (unsweetened) with a sprinkle of cinnamon</li>
+              <li> Handful of mixed berries (e.g., blueberries, raspberries)</li>
+            </ul></td>
+            <td><ul>
+             <li> Celery sticks or cucumber slices</li>
+              <li>2 tablespoons of almond butter or peanut butter (without added sugars)</li>
+            </ul></td>
+            <td><ul>
+             <li>Rice cakes or whole-grain crackers</li>
+             <li>Guacamole or salsa for dipping</li>
+            </ul></td>
+            <td><ul>
+              <li>1 small orange or clementine</li>
+              <li>10-12 raw almonds or walnuts</li>
+            </ul></td>
+            <td><ul>
+              <li>Baby carrots or cherry tomatoes</li>
+                <li> 2 tablespoons of hummus or tzatziki</li>
+            </ul></td>
+            <td><ul>
+              <li>Cottage cheese (low-fat) or Greek yogurt (unsweetened)</li>
+                <li>Sliced strawberries or peaches</li>
+            </ul></td>
+            <td><ul>
+              <li>Hard-boiled egg</li>
+                <li> 1 small apple or pear</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <th scope="row" class="meals">Dinner</th>
+            <td><ul>
+              <li>Baked chicken breast or tofu</li>
+                <li>Roasted sweet potatoes</li>
+                  <li>Steamed broccoli or green beans</li>
+            </ul></td>
+            <td><ul>
+              <li>Grilled fish (e.g., salmon, trout) or a vegetarian alternative</li>
+                <li>Quinoa salad with mixed vegetables</li>
+                  <li>Light vinaigrette dressing (olive oil, lemon juice, and herbs)</li>
+            </ul></td>
+            <td><ul>
+              <li>Stir-fried tofu or lean beef with a variety of non-starchy vegetables (e.g., bell peppers, zucchini, mushrooms)</li>
+                <li>Cauliflower rice or brown rice as the base</li>
+            </ul></td>
+            <td><ul>
+              <li> Baked or grilled turkey meatballs</li>
+                <li>Zucchini noodles (zoodles) with marinara sauce (without added sugars)</li>
+            </ul></td>
+            <td><ul>
+              <li>Stuffed bell peppers with a mixture of lean ground turkey, quinoa, diced tomatoes, and spices</li>
+                <li>Side salad with mixed greens and vinaigrette dressing</li>
+            </ul></td>
+            <td><ul>
+              <li>Baked or grilled chicken or fish</li>
+                <li>Sautéed spinach with garlic and a squeeze of lemon</li>
+            </ul></td>
+            <td><ul>
+              <li>Vegetable curry with chickpeas or lentils</li>
+                <li>Cauliflower rice or whole-grain naan (in moderation)</li>
+            </ul></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+</section>
+<!--footer--->
+        <footer>
+            <section id="footer">
+            <section id="banner">
+                <div class="container-fluid" id="banner-container">
+                <div class="row" id="banner-row">
+                    <div class="col-md-4" id="footer-col1">
+                    <h3>My Website</h3>
+                        
+        <p>At Diabetes diary we believe that customers should always get easy-to-use, best in the kind and fast services.Diabetes diary has achieved standards which helps diabetes patients to achieve healthy
+        </p>
+        
+                    </div>
+                    <div class="col-md-4" id="footer-col2">
+                    <h3>Contact Us</h3>
+                        
+        <p>Call Us-00000000000</p>
+        <p>Email Us- diabetesdiary.com</p>
+        
+                    </div>
+        
+                    <div class="col-md-4" id="footer-col2">
+                    <h3>Subscribe To Diabetes Diary</h3>
+                    <form>
+                        <div class="mb-3">
+                        <input
+                            type="email"
+                            placeholder="Enter Your Email"
+                            class="form-control"
+                            id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                        />
+                        <div id="emailHelp"
+                            class="form-text">
+                            We'll never share your email with anyone else.
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </section>
+            </section>
+            </footer>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+</body>
+</html>

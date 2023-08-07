@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      header {
+        background-color: #0a193d;
+        color: white;
+        padding: 20px;
+        padding: 30px;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .container {
+        display: grid;
+        grid-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        overflow: auto;
+        margin-top: 50px;
+      }
+
+      #calculator {
+        background: white;
+        max-width: 400px;
+        margin: 0 auto;
+        min-width: 400px;
+      }
+
+      #res {
+        background: lavender;
+      }
+
+      #calculator-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+        border: 3px solid;
+        border-radius: 10px;
+      }
+
+      #total-sugar {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      #selected-items {
+        list-style: none;
+        margin-bottom: 10px;
+      }
+
+      #selected-items li {
+        margin-bottom: 5px;
+      }
+      select,
+      input[type="number"],
+      button {
+        border: 2px solid;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 16px;
+      }
+      #warning-message {
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 10px;
+      }
+      .scrollbar {
+        overflow: auto;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sugar Intake Calculator</h1>
+    </header>
+    <div class="container">
+      <div id="calculator">
+        <h2>Calculator</h2>
+        <form id="calculator-form">
+          <label for="food-type-select">Select a food type:</label>
+          <select id="food-type-select">
+            <option value="">-- Select Food Type --</option>
+            <option value="fruit">Fruit</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="bakedGoods">BakedGoods</option>
+            <option value="vegetable">Vegetable</option>
+            <option value="nonveg">Non-Veg</option>
+            <option value="snacks">Snacks</option>
+            <option value="drinks">Drinks</option>
+          </select>
+          <br />
+          <label for="food-item-select">Select a food item:</label>
+          <select id="food-item-select">
+            <option value="">-- Select Food Item --</option>
+          </select>
+          <br />
+          <label for="quantity-input">Enter quantity:</label>
+          <input type="number" id="quantity-input" min="0" value="0" />
+          <br />
+          <label for="age-select">Select age group:</label>
+          <select id="age-select">
+            <option value="">--Select ageGroup--</option>
+            <option value="children">Children (25g)</option>
+            <option value="adults">Adults (36g)</option>
+            <option value="old">Old Age (20g)</option>
+          </select>
+          <br />
+          <button type="submit">Calculate</button>
+          <button type="button" id="clear-button">Clear</button>
+        </form>
+        <div class="scrollbar">
+          <div id="res">
+            <h2>Result</h2>
+            <p id="total-sugar" data-total-sugar="0">Total Sugar: 0 grams</p>
+            <h3>Selected Items:</h3>
+            <ul id="selected-items"></ul>
+            <p
+              id="warning-message"
+              style="font-weight: bold; font-size: 25px; color: red"
+            ></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const calculatorForm = document.getElementById("calculator-form");
+      const foodTypeSelect = document.getElementById("food-type-select");
+      const foodItemSelect = document.getElementById("food-item-select");
+      const quantityInput = document.getElementById("quantity-input");
+      const ageSelect = document.getElementById("age-select");
+      const totalSugarElement = document.getElementById("total-sugar");
+      const selectedItemsList = document.getElementById("selected-items");
+      const warningMessage = document.getElementById("warning-message");
+
+      const sugarQuantities = {
+        fruit: {
+          apple: { quantity: 10.3, symbol: "🍎" },
+          banana: { quantity: 17.2, symbol: "🍌" },
+          orange: { quantity: 9.4, symbol: "🍊" },
+          strawberry: { quantity: 4.9, symbol: "🍓" },
+          pineapple: { quantity: 9.9, symbol: "🍍" },
+          watermelon: { quantity: 6.2, symbol: "🍉" },
+          grapes: { quantity: 16, symbol: "🍇" },
+          mango: { quantity: 14, symbol: "🥭" },
+          pear: { quantity: 10.7, symbol: "🍐" },
+          kiwi: { quantity: 9, symbol: "🥝" },
+          peach: { quantity: 8, symbol: "🍑" },
+          blueberries: { quantity: 9.96, symbol: "🫐" },
+        },
+        breakfast: {
+          cereal: { quantity: 12.5, symbol: "🥣" },
+          oatmeal: { quantity: 1.6, symbol: "🥣" },
+          yogurt: { quantity: 15.9, symbol: "🥛" },
+          toast: { quantity: 2.5, symbol: "🍞" },
+          Idli: { quantity: 0.2, symbol: "🍚" },
+          Dosa: { quantity: 0.1, symbol: "🥞" },
+          Vada: { quantity: 0.3, symbol: "🍩" },
+          Pongal: { quantity: 0.4, symbol: "🍲" },
+          Upma: { quantity: 0.5, symbol: "🍛" },
+          Uttapam: { quantity: 0.2, symbol: "🥞" },
+          Ravadosa: { quantity: 0.1, symbol: "🥞" },
+          Appam: { quantity: 0.2, symbol: "🥞" },
+          Poori: { quantity: 0.7, symbol: "🍩" },
+        },
+        bakedGoods: {
+          cheeseCroissant: { quantity: 8.5, symbol: "🥐" },
+          eggRoll: { quantity: 3.2, symbol: "🥚" },
+          mixedGrainBread: { quantity: 4.8, symbol: "🍞" },
+          oatBranBagel: { quantity: 6.1, symbol: "🥯" },
+          oatBranBread: { quantity: 5.9, symbol: "🍞" },
+          raisinBread: { quantity: 6.7, symbol: "🍞" },
+          ryeBread: { quantity: 4.0, symbol: "🍞" },
+          whiteBread: { quantity: 3.7, symbol: "🍞" },
+          wholeWheatBread: { quantity: 3.8, symbol: "🍞" },
+        },
+        vegetable: {
+          tomato: { quantity: 2.6, symbol: "🍅" },
+          cucumber: { quantity: 1.7, symbol: "🥒" },
+          carrot: { quantity: 4.7, symbol: "🥕" },
+          Drumstick: { quantity: 1.4, symbol: "🥬" },
+          Brinjal: { quantity: 3.5, symbol: "🍆" },
+          LadysFinger: { quantity: 1.2, symbol: "🫑" },
+          Pumpkin: { quantity: 1.0, symbol: "🎃" },
+          GreenBeans: { quantity: 1.2, symbol: "🥒" },
+          Beetroot: { quantity: 7.3, symbol: "🍅" },
+          Tindora: { quantity: 3.3, symbol: "🥗" },
+          BitterMelon: { quantity: 0.9, symbol: "🥦" },
+          SnakeGourd: { quantity: 1.8, symbol: "🐍" },
+          WinterMelon: { quantity: 1.0, symbol: "🍈" },
+          BottleGourd: { quantity: 0.6, symbol: "🍶" },
+          Turai: { quantity: 2.0, symbol: "🥒" },
+          Guar: { quantity: 3.5, symbol: "🍴" },
+          Cabbage: { quantity: 2.5, symbol: " 🥬" },
+          Cauliflower: { quantity: 1.9, symbol: "🥦" },
+        },
+        nonveg: {
+          chicken: { quantity: 0, symbol: "🍗" },
+          beef: { quantity: 0, symbol: "🥩" },
+          chickenBiryani: { quantity: 0, symbol: "🍗" },
+          muttonCurry: { quantity: 0, symbol: "🍖" },
+          fishFry: { quantity: 0, symbol: "🐟" },
+          prawnMasala: { quantity: 0, symbol: "🍤" },
+          eggRoast: { quantity: 0, symbol: "🥚" },
+          crabCurry: { quantity: 0, symbol: "🦀" },
+        },
+        snacks: {
+          bananaChips: { quantity: 18.0, symbol: "🍌" },
+          chioChips: { quantity: 1.0, symbol: "🍿" },
+          breakfastBar: { quantity: 10.5, symbol: "🍫" },
+          caramelPopcorn: { quantity: 12.8, symbol: "🍿" },
+          grahamCracker: { quantity: 7.4, symbol: "🍪" },
+          granolaBar: { quantity: 8.9, symbol: "🍫" },
+          potatoChips: { quantity: 0.5, symbol: "🥔" },
+          pretzels: { quantity: 1.0, symbol: "🥨" },
+        },
+        drinks: {
+          thumsup: { quantity: 42.0, symbol: "🥤" },
+          coke: { quantity: 39.0, symbol: "🥤" },
+          pepsi: { quantity: 41.5, symbol: "🥤" },
+          orangeSoda: { quantity: 35.2, symbol: "🥤" },
+          lemonade: { quantity: 25.8, symbol: "🥤" },
+          icedTea: { quantity: 12.5, symbol: "🥤" },
+          appleJuice: { quantity: 30.0, symbol: "🍎" },
+          orangeJuice: { quantity: 28.5, symbol: "🍊" },
+          grapeJuice: { quantity: 34.2, symbol: "🍇" },
+          water: { quantity: 0.0, symbol: "🚰" },
+        },
+      };
+
+      foodTypeSelect.addEventListener("change", function () {
+        const foodType = this.value;
+        const foodItems = sugarQuantities[foodType];
+
+        while (foodItemSelect.firstChild) {
+          foodItemSelect.removeChild(foodItemSelect.firstChild);
+        }
+
+        Object.keys(foodItems).forEach((food) => {
+          const option = document.createElement("option");
+          option.value = food;
+          option.textContent =
+            foodItems[food].symbol +
+            " " +
+            food.charAt(0).toUpperCase() +
+            food.slice(1);
+          foodItemSelect.appendChild(option);
+        });
+      });
+
+      calculatorForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const selectedFoodType = foodTypeSelect.value;
+        const selectedFoodItem = foodItemSelect.value;
+        const quantity = parseInt(quantityInput.value);
+        const ageGroup = ageSelect.value;
+
+        if (
+          selectedFoodType &&
+          selectedFoodItem &&
+          sugarQuantities.hasOwnProperty(selectedFoodType) &&
+          sugarQuantities[selectedFoodType].hasOwnProperty(selectedFoodItem) &&
+          quantity > 0
+        ) {
+          const sugarQuantity =
+            sugarQuantities[selectedFoodType][selectedFoodItem].quantity;
+          const totalSugar = sugarQuantity * quantity;
+          const itemName =
+            sugarQuantities[selectedFoodType][selectedFoodItem].symbol +
+            " " +
+            selectedFoodItem.charAt(0).toUpperCase() +
+            selectedFoodItem.slice(1);
+
+          let listItem;
+          let existingListItem = selectedItemsList.querySelector(
+            `li[data-food-item="${selectedFoodItem}"]`
+          );
+
+          if (existingListItem) {
+            const existingQuantity = parseInt(
+              existingListItem.getAttribute("data-quantity")
+            );
+            const existingTotalSugar = parseFloat(
+              existingListItem.getAttribute("data-total-sugar")
+            );
+
+            const newQuantity = existingQuantity + quantity;
+            const newTotalSugar = existingTotalSugar + totalSugar;
+
+            existingListItem.setAttribute("data-quantity", newQuantity);
+            existingListItem.setAttribute("data-total-sugar", newTotalSugar);
+            existingListItem.textContent =
+              itemName +
+              " - " +
+              newTotalSugar +
+              " grams (" +
+              newQuantity +
+              " x " +
+              sugarQuantity +
+              " grams)";
+          } else {
+            listItem = document.createElement("li");
+            listItem.setAttribute("data-food-item", selectedFoodItem);
+            listItem.setAttribute("data-quantity", quantity);
+            listItem.setAttribute("data-total-sugar", totalSugar);
+            listItem.textContent =
+              itemName +
+              " - " +
+              totalSugar +
+              " grams (" +
+              quantity +
+              " x " +
+              sugarQuantity +
+              " grams)";
+            selectedItemsList.appendChild(listItem);
+          }
+
+          const currentTotalSugar = parseFloat(
+            totalSugarElement.getAttribute("data-total-sugar")
+          );
+          totalSugarElement.setAttribute(
+            "data-total-sugar",
+            currentTotalSugar + totalSugar
+          );
+          totalSugarElement.textContent =
+            "Total Sugar: " + (currentTotalSugar + totalSugar) + " grams";
+
+          const recommendedLimit =
+            ageGroup === "children"
+              ? 25
+              : ageGroup === "adults"
+              ? 36
+              : ageGroup === "old"
+              ? 20
+              : 0;
+
+          const isExceedingLimit =
+            currentTotalSugar + totalSugar > recommendedLimit;
+
+          warningMessage.textContent = isExceedingLimit
+            ? "Warning: Exceeding the recommended sugar daily limit (" +
+              recommendedLimit +
+              "g)"
+            : "Take care: Enjoy your diet(" + recommendedLimit + "g)";
+
+          warningMessage.style.color = isExceedingLimit ? "red" : "green";
+
+          foodTypeSelect.value = "";
+          foodItemSelect.value = "";
+          quantityInput.value = "0";
+          ageSelect.value = "";
+        }
+      });
+
+      const clearButton = document.getElementById("clear-button");
+      clearButton.addEventListener("click", function () {
+        while (selectedItemsList.firstChild) {
+          selectedItemsList.removeChild(selectedItemsList.firstChild);
+        }
+
+        totalSugarElement.setAttribute("data-total-sugar", 0);
+        totalSugarElement.textContent = "Total Sugar: 0 grams";
+
+        warningMessage.textContent = "";
+
+        foodTypeSelect.value = "";
+        foodItemSelect.value = "";
+        quantityInput.value = "0";
+        ageSelect.value = "";
+      });
+    </script>
+  </body>
+</html>

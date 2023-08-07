@@ -58,6 +58,11 @@ body{
 #banner-row p{
 	font-size: large;
 }
+#banner-row h3{
+	font-weight: bolder;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
+}
 #banner-row a{
 	background-color: #ffff !important;
 	color: #0a193d !important;
@@ -82,6 +87,14 @@ body{
 }
 #service h1{
 	padding-bottom: 70px;
+	font-weight: bolder;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
+}
+#service p{
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 .inner{
 overflow: hidden;
@@ -98,6 +111,10 @@ overflow: hidden;
 .card:hover{
 	transform: scale(1.15);
 }
+h5{
+	font-weight: bolder;
+	font-family:'Times New Roman', Times, serif;
+}
 
 /* about */
 
@@ -110,6 +127,9 @@ overflow: hidden;
 
 #about h1{
 	padding-bottom: 70px;
+	font-weight: bolder;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
 }
 
 #about-col ul{
@@ -133,6 +153,9 @@ overflow: hidden;
 
 #blog h1{
 	padding-bottom: 70px;
+	font-weight: bolder;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
 }
 
 #blog-col2 ul{
@@ -152,9 +175,16 @@ overflow: hidden;
   padding-bottom: 120px;
 	color:#ffff;
   }
-  
+  #doctors p{
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
   #doctors h1{
   padding-bottom: 70px;
+  font-weight: bolder;
+  font-stretch:ultra-expanded;
+  font-family:'Times New Roman', Times, serif;
   }
   #textcard{
 	color:#0a193d;

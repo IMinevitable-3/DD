@@ -67,14 +67,13 @@
 				<a class="nav-link"
 				href="#footer">Contact us</a>
 			</li>
-			</ul>
-			<a href="{% url 'login_view' %}">login 
-			{% comment %} <form class="d-flex" role="search">
+			</ul> 
+			<form class="d-flex" role="search" action="{% url 'login_view' %}">
          <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
         </svg> Login</button>
-        </form> {% endcomment %}
+        </form> 
 		</a>
 		</div>
     </div>
@@ -114,7 +113,7 @@
 					<div class="card-body text-center">
 					  <h5 class="card-title">SUGAR CALCULATOR</h5>
 					  <p class="card-text">Managing blood sugar levels is a critical aspect of diabetes care.Calculate your sugar levels and make informed choices about your diet and sugar intake and to lead a healthier lifestyle.</p>
-					  <a href="#" class="btn btn-primary">Calculate</a>
+					  <a href="{% url 'sugarcalci' %}" class="btn btn-primary">Calculate</a>
 					</div>
 				  </div>
 			</div>
@@ -126,7 +125,7 @@
 					<div class="card-body text-center">
 					  <h5 class="card-title">DIET PLAN</h5>
 					  <p class="card-text">Here's a diet plan that can serve as a starting point for individuals with diabetes.Remember to monitor your blood sugar levels regularly and make adjustments to your diet as needed.</p>
-					  <a href="#" class="btn btn-primary">Get Dietplan</a>
+					  <a href="{% url 'dietplan' %}" class="btn btn-primary">Get Dietplan</a>
 					</div>
 				  </div>
 			</div>
@@ -138,7 +137,7 @@
 					<div class="card-body text-center">
 					  <h5 class="card-title">EXERCISE</h5>
 					  <p class="card-text">Exercise is an essential component of diabetes,as it offers numerous benefits for blood sugar control,cardiovascular health,weight management , and overall well-being.</p>
-					  <a href="#" class="btn btn-primary">Exercise</a>
+					  <a href="https://www.diabetes.ca/nutrition---fitness/exercise---activity" class="btn btn-primary">Exercise</a>
 					</div>
 				  </div>
 			</div>
@@ -215,12 +214,12 @@
 	<hr />
 	<!-- doctors -->
 	<section id="doctors">
-		<h1 class="text-center">Doctors</h1>
+		<h1 class="text-center">OUR DOCTORS</h1>
       <div class="container" >
 		<div class="row justify-content-center">
 			<div class="col-md-4" id="textcard">
 				<div class="card shadow" style="width: 20rem;">
-					<img class="card-img-top"  src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=2000" class="card-img-top" alt="doctor1">
+					<img class="card-img-top"  src="https://rocketdoctor.ca/wp-content/uploads/2023/02/step3-1024x1024.png" class="card-img-top" alt="doctor1">
 					<div class="card-body text-center">
 					  <h5 class="card-title">Name</h5>
 					  <p class="card-text">Homecare International provides personalized constitutional homeopathy treatments for all chronic and acute diseases that is safe, effective and has no side effects.</p>
@@ -230,7 +229,7 @@
 			</div>
 			<div class="col-md-4" id="textcard">
 				<div class="card shadow" style="width: 20rem;">
-					<img class="card-img-top" src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=2000" class="card-img-top" alt="doctor2">
+					<img class="card-img-top" src="https://rocketdoctor.ca/wp-content/uploads/2023/02/step3-1024x1024.png" class="card-img-top" alt="doctor2">
 					<div class="card-body text-center">
 					  <h5 class="card-title">Name</h5>
 					  <p class="card-text">Homecare International provides personalized constitutional homeopathy treatments for all chronic and acute diseases that is safe, effective and has no side effects.</p>
@@ -240,7 +239,7 @@
 			</div>
 			<div class="col-md-4" id="textcard">
 				<div class="card shadow" style="width: 20rem;">
-					<img class="card-img-top" src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=2000" class="card-img-top" alt="doctor3">
+					<img class="card-img-top" src="https://rocketdoctor.ca/wp-content/uploads/2023/02/step3-1024x1024.png" class="card-img-top" alt="doctor3">
 					<div class="card-body text-center">
 					  <h5 class="card-title">Name</h5>
 					  <p class="card-text">Homecare International provides personalized constitutional homeopathy treatments for all chronic and acute diseases that is safe, effective and has no side effects.</p>
@@ -251,6 +250,7 @@
 		</div>
 	  </div>
 	  </section>
+				
 	<!-- footer -->
 	<footer>
 	<section id="footer">
