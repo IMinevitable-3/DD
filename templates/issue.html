@@ -1,26 +1,164 @@
 {% extends "base.html" %}
  
 {%  block title %} Report  the issue {% endblock %}
+{% block resources %} 
+<style>
+    *{
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+body{
+  background-color: white;
+}
+/* navbar */ 
+.navbar-nav{
+	margin-right: 0 !important;
+	padding-right: 100px;
+}
 
+.navbar{
+	background-color: #0a193d;
+	color: white !important;
+}
+
+.nav-item a{
+	color: white !important;
+}
+
+.nav-item{
+	padding-left: 2px;
+}
+
+.navbar-brand{
+	color: white !important;
+	padding-left: 100px;
+}
+
+#navbar button{
+	color: white !important;
+}
+#issue h1{
+  padding-bottom: 40px;
+  padding-top: 20px;
+	font-weight: bolder;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
+}
+.container{
+            display:flex;
+             justify-content: center;
+             align-items: center;
+             min-height: 90vh;
+        }
+        .issueclass{
+          width: 450px;
+             height: 650px;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+           padding: 0 15px 0 15px;
+           border: 2px solid rgba(255,255,2550.5);
+           border-radius: 20px;
+           position: relative;
+        }
+        .titl{
+	font-weight: bold;
+	font-stretch:ultra-expanded;
+	font-family:'Times New Roman', Times, serif;
+        }
+        .submit{
+          padding: 10px;
+          border-radius: 20px;
+          background-color: #0a193d;
+          color: white;
+        }
+        #issues{
+          padding: 10px;
+          border-radius: 20px;
+        }
+        #content{
+          padding: 30px;
+          border-radius: 20px;
+        }
+    </style>
+ {% endblock %}
 {% block content %} 
-<form action="{% url 'issue_view' user.username %}" method="post">
-        {% csrf_token %}
-        
-        <label for="issues">Choose an issue:</label>
-        <br>
-        <select id="issues" name="issues">
-            <option value="bug">Bug</option>
-            <option value="feature">Feature Request</option>
-            <option value="support">Technical Support</option>
-            <option value="other">Other Issue</option>
-        </select>
-        <br>
-
-        <label for="content"> Describe Issue:</label>
-        <br>
-        <textarea id="content" name="content" rows="4" cols="40"></textarea>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-
+<section id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light fixed top">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home_view' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+          <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+          <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+        </svg> Diabetes Diary</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"
+        id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+        <li class="nav-item">
+          <a class="nav-link active"
+          aria-current="page"
+          href="{% url 'home_view' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="{% url 'addmeal' user.username %}">ADD MEAL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="{% url 'settings_view' user.username %}">PROFILE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="{% url 'write_blog_view' user.username  %}">WRITE BLOG</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link" href="{% url  'dashboard_view'  %}">DASHBOARD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          href="{% url 'logout_view' %}">Log Out</a>
+        </li>
+        </ul>
+      </div>
+      </div>
+  </nav>
+  </section>
+  <!---issue-->
+  <section id="issue">
+    <div class="container">
+        <div class="issueclass">
+            <h1 class="text-center">Report An Issue</h1>
+            <form action="{% url 'issue_view' user.username %}" method="post">
+                {% csrf_token %}
+                <div class="row g-3 align-items-center">
+                <label for="issues" class="titl">CHOOSE AN ISSUE:</label>
+                <br>
+                <select id="issues" name="issues">
+                    <option value="bug">Bug</option>
+                    <option value="feature">Feature Request</option>
+                    <option value="support">Technical Support</option>
+                    <option value="other">Other Issue</option>
+                </select>
+                <br>
+                <label for="content" class="titl"> DESCRIBE ISSUE:</label>
+                <br>
+                <textarea id="content" name="content" rows="4" cols="40"></textarea>
+                <br>
+                <input type="submit" value="Submit" class="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+  </section>
 {% endblock %}

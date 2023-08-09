@@ -7,36 +7,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
     body {
-    background: rgb(99, 39, 120)
+    background:#0a193d;
+    font-weight: bolder;
+	font-stretch:ultra-expanded;
+    font-family:'Times New Roman', Times, serif;
     }
 
     .form-control:focus {
         box-shadow: none;
-        border-color: #BA68C8
+        border-color:#1c3a81;
     }
 
     .profile-button {
-        background: rgb(99, 39, 120);
+        background:#0a193d;
         box-shadow: none;
         border: none
     }
 
     .profile-button:hover {
-        background: #682773
+        background:  #0c296c;
     }
 
     .profile-button:focus {
-        background: #682773;
+        background:  #0c296c;
         box-shadow: none
     }
 
     .profile-button:active {
-        background: #682773;
+        background:#0a193d;
         box-shadow: none
     }
 
     .back:hover {
-        color: #682773;
+        color: #0a193d;
         cursor: pointer
     }
 
@@ -45,128 +48,214 @@
     }
 
     .add-experience:hover {
-        background: #BA68C8;
+        background: #0a193d;
         color: #fff;
         cursor: pointer;
-        border: solid 1px #BA68C8
+        border: solid 1px #0a193d;
     }
+    .navbar-nav{
+	margin-right: 0 !important;
+	padding-right: 100px;
+}
+
+.navbar{
+	background-color: #0a193d;
+	color: white !important;
+}
+
+.nav-item a{
+	color: white !important;
+}
+
+.nav-item{
+	padding-left: 2px;
+}
+
+.navbar-brand{
+	color: white !important;
+	padding-left: 100px;
+}
+
+#navbar button{
+	color: white !important;
+}
 </style>
 {% endblock %}
 
 {% block content %}
     <!-- <h1>{{ user.username }}</h1> -->
-    <form action="{% url 'settings_view' user.username %}" method="post">
-        {% csrf_token %}
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                        <span class="font-weight-bold">{{ user.username }}</span>
-                        <span class="text-black-50">{{ user.email }}</span>
-                    </div>
-                </div>
-                <div class="col-md-5 border-right">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Profile Settings</h4>
+    <!---header-->
+    <section id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light fixed top">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home_view' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+            <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+            <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+          </svg> Diabetes Diary</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                    <a class="nav-link active"
+                    aria-current="page"
+                    href="{% url 'home_view' %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a  class="nav-link" href="{% url  'dashboard_view'  %}">DASHBOARD</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                    href="{% url 'addmeal' user.username %}">ADD MEAL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                    href="{% url 'write_blog_view' user.username  %}">WRITE BLOG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                    href="#">MEAL HISTORY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                    href="{% url 'issue_view'  user.username %}">REPORT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                    href="{% url 'logout_view' %}">Log Out</a>
+                  </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+        </section>
+        <!--profile-->
+        <div class="container">
+            <form action="{% url 'settings_view' user.username %}" method="post">
+                {% csrf_token %}
+                <div class="container rounded bg-white mt-5 mb-5" >
+                    <div class="row">
+                        <div class="col-md-3 border-right">
+                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                                <span class="font-weight-bold">{{ user.username }}</span>
+                                <span class="text-black-50">{{ user.email }}</span>
+                            </div>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6">
-                                <label class="labels">Name</label>
-                                <input type="text" name="first_name" class="form-control" placeholder="First name" value="{{ user.first_name }}">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="labels">Surname</label>
-                                <input type="text" name="last_name" class="form-control" placeholder="Surname" value="{{ user.last_name }}">
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label class="labels">Mobile Number</label>
-                                <input type="text" name="mobile_number" class="form-control" placeholder="Enter phone number" value="{{ user.mobile_number }}">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Email ID</label>
-                                <input type="text" name="email" class="form-control" placeholder="Enter email id" value="{{ user.email }}">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Date Of Birth</label>
-                                <input type="date" name="date_of_birth" class="form-control" placeholder="Date Of Birth" value="{{ user.date_of_birth }}">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Are you diabetic?</label>
+                        <div class="col-md-5 border-right">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4 class="text-right">Profile Settings</h4>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label class="labels">Name</label>
+                                        <input type="text" name="first_name" class="form-control" placeholder="First name" value="{{ user.first_name }}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="labels">Surname</label>
+                                        <input type="text" name="last_name" class="form-control" placeholder="Surname" value="{{ user.last_name }}">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <label class="labels">Mobile Number</label>
+                                        <input type="text" name="mobile_number" class="form-control" placeholder="Enter phone number" value="{{ user.mobile_number }}">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Email ID</label>
+                                        <input type="text" name="email" class="form-control" placeholder="Enter email id" value="{{ user.email }}">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Date Of Birth</label>
+                                        <input type="date" name="date_of_birth" class="form-control" placeholder="Date Of Birth" value="{{ user.date_of_birth }}">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Are you diabetic?</label>
+                                        <div>
+                                            <label>
+                                                <input type="radio" name="diabetic" value="yes"> Yes
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="diabetic" value="no"> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <label class="labels">Gender</label>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="gender" value="male"> Male
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="gender" value="female"> Female
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="labels">Country</label>
+                                        <input type="text" name="country" class="form-control" placeholder="Country" value="{{ user.country }}">
+                                    </div>
+                                </div>
+                                <div class="mt-5 text-center">
+                                    <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                                </div>
+        
                                 <div>
-                                    <label>
-                                        <input type="radio" name="diabetic" value="yes"> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="diabetic" value="no"> No
-                                    </label>
+                                    {% if messages %}
+                                        <ul class="messages">
+                                        {% for message in messages %}
+                                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% endif %}
+        
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <label class="labels">Gender</label>
-                            <div>
-                                <label>
-                                    <input type="radio" name="gender" value="male"> Male
-                                </label>
-                                <label>
-                                    <input type="radio" name="gender" value="female"> Female
-                                </label>
+                        <div class="col-md-4">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center experience">
+                                    <span>Body details</span>
+                                    <span class="border px-3 p-1 add-experience">
+                                        <i class="fa fa-plus"></i>&nbsp;Body
+                                    </span>
+                                </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <label class="labels">Height</label>
+                                    <input type="number" name="height" class="form-control" placeholder="In Cms" value="">
+                                </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <label class="labels">Weight</label>
+                                    <input type="number" name="weight" class="form-control" placeholder="In Kgs" value="">
+                                </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <label class="labels">Mean Sugar Level</label>
+                                    <input type="number" name="mean_sugar_level" class="form-control" placeholder="In mg/Dl" value="">
+                                </div>
+                                <br>
+                                <div class="mt-5 text-center">
+                                    <a href="{% url 'delete_acct' user.username %}"><button class="btn btn-primary profile-button" type="button">Delete Account</button></a>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label class="labels">Country</label>
-                                <input type="text" name="country" class="form-control" placeholder="Country" value="{{ user.country }}">
-                            </div>
-                        </div>
-                        <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
-                        </div>
-
-                        <div>
-                            {% if messages %}
-                                <ul class="messages">
-                                {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                                </ul>
-                            {% endif %}
-
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center experience">
-                            <span>Body details</span>
-                            <span class="border px-3 p-1 add-experience">
-                                <i class="fa fa-plus"></i>&nbsp;Body
-                            </span>
-                        </div>
-                        <br>
-                        <div class="col-md-12">
-                            <label class="labels">Height</label>
-                            <input type="number" name="height" class="form-control" placeholder="In Cms" value="">
-                        </div>
-                        <br>
-                        <div class="col-md-12">
-                            <label class="labels">Weight</label>
-                            <input type="number" name="weight" class="form-control" placeholder="In Kgs" value="">
-                        </div>
-                        <br>
-                        <div class="col-md-12">
-                            <label class="labels">Mean Sugar Level</label>
-                            <input type="number" name="mean_sugar_level" class="form-control" placeholder="In mg/Dl" value="">
-                        </div>
-                        <br>
-                        <div class="mt-5 text-center">
-                            <a href="{% url 'delete_acct' user.username %}"><button class="btn btn-primary profile-button" type="button">Delete Account</button></a>
-                        </div>
-                    </div>
-                </div>
+            </form>
             </div>
-        </div>
-    </form>
-{% endblock %}
+        {% endblock %}

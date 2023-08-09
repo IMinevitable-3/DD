@@ -1,22 +1,123 @@
 {% extends "base.html" %}
 {% block title %} Blog {% endblock %}
+{% block resources %} 
+<style>
+    *{
+margin: 0;
+padding: 0;
+font-family: 'Roboto Condensed', sans-serif;
+}
+body{
+background-color: white;
+}
+/* navbar */ 
+.navbar-nav{
+margin-right: 0 !important;
+padding-right: 100px;
+}
+
+.navbar{
+background-color: #0a193d;
+color: white !important;
+}
+
+.nav-item a{
+color: white !important;
+}
+
+.nav-item{
+padding-left: 2px;
+}
+
+.navbar-brand{
+color: white !important;
+padding-left: 100px;
+}
+
+#navbar button{
+color: white !important;
+}
+ h1{
+padding-bottom: 40px;
+padding-top: 20px;
+font-weight: bolder;
+font-stretch:ultra-expanded;
+font-family:'Times New Roman', Times, serif;
+}
+.container{
+        display:flex;
+         justify-content: center;
+         align-items: center;
+         min-height: 90vh;
+    }
+    .blogclass{
+      width: 450px;
+         height: 650px;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
+       padding: 0 15px 0 15px;
+       border: 2px solid rgba(255,255,2550.5);
+       border-radius: 20px;
+       position: relative;
+    }
+</style>
+ {% endblock %} 
 {% block content %} 
 
-    <h3>blog</h3>
-    {% for a in  articles %}
-        <div>
-            <h2><a href="{% url 'asked_article_view' a.article_head %}">{{a.article_head}}</a></h2>
-            <br>
+<section id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light fixed top">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home_view' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+          <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+          <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+        </svg> Diabetes Diary</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"
+        id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+        <li class="nav-item">
+          <a class="nav-link active"
+          aria-current="page"
+          href="{% url 'home_view' %}">HOME</a>
+        </li>
+        </ul>
+      </div>
+      </div>
+  </nav>
+  </section>
+  <section id="writeblog">
+    <div class="container">
+        <div class="blogclass">
+            <h3 class="text-center">BLOG</h3>
+            {% for a in  articles %}
             <div>
-                <a href="{% url 'profile_view' a.user_written %}">{{a.user_written}}</a> 
+                <h4><a href="{% url 'asked_article_view' a.article_head %}">{{a.article_head}}</a></h4>
+                <br>
+                <div>
+                    <h4>{{a.user_written}}</h4>
+                </div>
+                <div>
+                    <h6>{{a.Date_written}}</h6>
+                </div>
+                <br>
             </div>
-            <div>
-                <h6>{{a.Date_written}}</h6>
-            </div>
-            <br>
+          
+        {% endfor %}
         </div>
-      
-    {% endfor %}
+    </div>
+  </section>
 
 
 {% endblock %}

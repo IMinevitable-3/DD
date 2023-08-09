@@ -8,72 +8,199 @@
   rel="stylesheet"
   href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css"
 />
+<style>
+    *{
+margin: 0;
+padding: 0;
+font-family: 'Roboto Condensed', sans-serif;
+}
+body{
+background-color: white;
+}
+/* navbar */ 
+.navbar-nav{
+margin-right: 0 !important;
+padding-right: 100px;
+}
+
+.navbar{
+background-color: #0a193d;
+color: white !important;
+}
+
+.nav-item a{
+color: white !important;
+}
+
+.nav-item{
+padding-left: 2px;
+}
+
+.navbar-brand{
+color: white !important;
+padding-left: 100px;
+}
+
+#navbar button{
+color: white !important;
+}
+h1{
+padding-bottom: 40px;
+padding-top: 20px;
+font-weight: bolder;
+font-stretch:ultra-expanded;
+font-family:'Times New Roman', Times, serif;
+}
+.container{
+        display:flex;
+         justify-content: center;
+         align-items: center;
+         min-height: 90vh;
+    }
+    .blogclass{
+      width: 450px;
+         height: 650px;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
+       padding: 0 15px 0 15px;
+       border: 2px solid rgba(255,255,2550.5);
+       border-radius: 20px;
+       position: relative;
+    }
+    .title{
+font-weight: bold;
+font-stretch:ultra-expanded;
+font-family:'Times New Roman', Times, serif;
+border-radius:20px ;
+padding: 10px;
+    }
+    .submit{
+      padding: 10px;
+      border-radius: 20px;
+      background-color: #0a193d;
+      color: white;
+    }
+    #title{
+        padding: 10px;
+      border-radius: 20px;
+    }
+    #autocomplete{
+        padding: 10px;
+      border-radius: 20px;
+    }
+    #content{
+      padding: 30px;
+      border-radius: 20px;
+    }
+    .list{
+        font-weight: bold;
+font-stretch:ultra-expanded;
+font-family:'Times New Roman', Times, serif;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-{% csrf_token %}
-
-    <label  id = "casual" for="selected-date"  data-user="{{ user }}">Select a date:</label>
-    <input type="date" id="selected-date">
-    <br>
-    <input type="text" id="autocomplete" placeholder="Search for names...">
-    <!-- <button id="clearButton">Clear</button> -->
-
-    <ul id="suggestion-list"></ul>
-
-    <ul id="selected-values"></ul>
-
-    <button id="submit-button" >Submit List</button>
-
-  <script>
-const myElement = document.getElementById('casual');
-const user = myElement.dataset.user;
-
-document.getElementById('submit-button').addEventListener('click', function () {
-    const csrfToken = '{{ csrf_token }}';
-
-    const selectedDate = document.getElementById('selected-date').value;
-
-    const selectedValuesList = document.getElementById('selected-values');
-    const selectedValues = Array.from(selectedValuesList.children)
-        .map(li => li.textContent.replace('Remove', '')); // Remove the "Remove" suffix
-    console.log(selectedValues);
-
-    const data = {
-        food: selectedValues,
-        date: selectedDate,
-        usr: user,
-    };
-
-    fetch('/compute/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken,
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response from the Django view if needed
-            alert("data submitted successfully")
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error sending data to Django view:', error);
+<section id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light fixed top">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home_view' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+          <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9H1.475Z"/>
+          <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.88Z"/>
+        </svg> Diabetes Diary</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"
+        id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+        <li class="nav-item">
+          <a class="nav-link active"
+          aria-current="page"
+          href="{% url 'home_view' %}">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link" href="{% url  'dashboard_view'  %}">DASHBOARD</a>
+        </li>
+        
+        
+        <li class="nav-item">
+          <a class="nav-link"
+          href="{% url 'logout_view' %}">Log Out</a>
+        </li>
+        
+        </ul>
+      </div>
+      </div>
+  </nav>
+    </section> 
+    <div class="container">
+        <div class="addmeal">
+            <h1 class="text-center">ADD MEAL</h1>
+                {% csrf_token %}
+                <div class="row g-3 align-items-center">
+            <label  id = "casual" for="selected-date" class="title" data-user="{{ user }}">Select a date:</label>
+            <input type="date" class="title" id="selected-date">
+            <br>
+            <label for="content" class="title">Search Items</label>
+            <input type="text" id="autocomplete" placeholder="Search for names...">
+            <!-- <button id="clearButton">Clear</button> -->
+        
+            <ul id="suggestion-list" class="list"></ul>
+        
+            <ul id="selected-values" class="list"></ul>
+        
+            <button id="submit-button" class="submit">Submit List</button>
+        </div>
+    </div>
+    <script>
+        const myElement = document.getElementById('casual');
+        const user = myElement.dataset.user;
+        
+        document.getElementById('submit-button').addEventListener('click', function () {
+            const csrfToken = '{{ csrf_token }}';
+        
+            const selectedDate = document.getElementById('selected-date').value;
+        
+            const selectedValuesList = document.getElementById('selected-values');
+            const selectedValues = Array.from(selectedValuesList.children)
+                .map(li => li.textContent.replace('Remove', '')); // Remove the "Remove" suffix
+            console.log(selectedValues);
+        
+            const data = {
+                food: selectedValues,
+                date: selectedDate,
+                usr: user,
+            };
+        
+            fetch('/compute/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken,
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from the Django view if needed
+                    alert("data submitted successfully")
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error sending data to Django view:', error);
+                });
         });
-});
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     const inputElement = document.getElementById("autocomplete");
-//     const clearButton = document.getElementById("clearButton");
-
-//     clearButton.addEventListener("click", function() {
-//       inputElement.value = "";
-//     });
-//   });
-//   </script>
-
-
+          </script>
+    
 {% endblock %}

@@ -49,6 +49,12 @@ def dashboard_view(request):
 def home_view(request):
     return render(request,'index.html') 
 
+def dietplan(request):
+    return render(request,'diet.html')
+    
+def sugarcalci(request):
+    return render(request,'sugar.html')
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']

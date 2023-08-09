@@ -12,6 +12,8 @@ urlpatterns = [
     path('delete/<name>' ,views.delete_acct,name="delete_acct"),
     path('get-names',views.get_names,name="get_names"),
     path('addmeal/<name>',views.addmeal,name="addmeal"),
+     path('dietplan',views.dietplan,name='dietplan'),
+    path('sugarcalci',views.sugarcalci,name='sugarcalci'),
     path('compute/' , views.compute,name="compute"),
     path('<path:not_found>/', views.not_found_view),
 ]
